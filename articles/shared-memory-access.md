@@ -21,31 +21,25 @@ An implementation of `Balancer` will get a list of strings in its constructor, t
 string won't be changing, but the `getNext()` method will be accessed from multiple threads.
 Here are possible implementations of this interface:
 
-NonThreadSafeBalancer
-: Simplest implementation that does not guarantee uniform distribution of results
-when used from multiple threads, though at least it does not fail with "index out
-of bounds" exception that is possible due to data race.
+- `NonThreadSafeBalancer` - Simplest implementation that does not guarantee uniform distribution
+  of results when used from multiple threads, though at least it does not fail with "index out
+  of bounds" exception that is possible due to data race.
 
-SynchronizedMethodBalancer
-: Simplest way to make the balancer thread-safe: by adding `synchronized` keyword
-to the `getNext()` method declaration.
+- `SynchronizedMethodBalancer` - Simplest way to make the balancer thread-safe: by adding
+  `synchronized` keyword to the `getNext()` method declaration.
 
-SynchronizedBlockBalancer
-: Similar as above, but with the synchronization limited to only the part of the
-method that establishes the index of next string to be returned, getting the
-selected string from the pool of strings may be done in parallel by many threads.
+- `SynchronizedBlockBalancer` - Similar as above, but with the synchronization limited to
+  only the part of the method that establishes the index of next string to be returned, getting
+  the selected string from the pool of strings may be done in parallel by many threads.
 
-AtomicIntegerBalancer
-: Implementation based on `AtomicInteger`'s `compareAndSet()` method, to avoid
-synchronization of threads.
+- `AtomicIntegerBalancer` - Implementation based on `AtomicInteger`'s `compareAndSet()` method,
+  to avoid synchronization of threads.
 
-AtomicIntegerExchangeBalancer
-: Also based on `AtomicInteger`, but using `compareAndExchange()` to reduce the
-number of reads from memory.
+- `AtomicIntegerExchangeBalancer` - Also based on `AtomicInteger`, but using `compareAndExchange()`
+  to reduce the number of reads from memory.
 
-SemaphoreBalancer
-: Similar in nature to the usage of `synchronized` keyword, but access to critical
-section is guarded by `Sempaphore`.
+- `SemaphoreBalancer` - Similar in nature to the usage of `synchronized` keyword, but access
+  to critical section is guarded by `Sempaphore`.
 
 Here are the raw results from microbenchmarks done using OpenJDK 64-Bit Server VM,
 17.0.8+7 in Windows 10 Pro running on Intel(R) Core(TM) i5-8400 CPU with 6 cores:
@@ -162,7 +156,7 @@ Going back to the business requirement, it's work asking how uniform the distrib
 of the resources must be. All the implementations that use some form of synchronization or
 coordination make sure that each resource is used no more than one less or one more than any
 other resource. But maybe it's enough if the usage differs no more than 1%. It would mean that
-for 40000 usages of 4 resources, the difference should be no m ore than 100. And the simplest
+for 40000 usages of 4 resources, the difference should be no more than 100. And the simplest
 and fastest `NonThreadSafeBalancer` implementation satisfies this requirement:
 
 ```
