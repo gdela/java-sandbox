@@ -53,11 +53,13 @@ Here are the raw results from microbenchmarks done using OpenJDK 64-Bit Server V
 | AtomicIntegerExchangeBalancer        | 111 |  18 |  11 | 11 |
 | SemaphoreBalancer                    |  58 |  28 |  33 | 33 |
 
-![](shared-memory-access/benchmark-all-bar-plot.png "All Balancers") ![](shared-memory-access/benchmark-safe-bar-plot.png "Thread-Safe Balancers")
+![](shared-memory-access/benchmark-all-bar-plot.png "All Balancers")
 
 The values are in ops/μs, so the higher the value the better. Obviously the non-thread-safe
-implementation is fastest, but then things start to get interesting.
+implementation is fastest, but then things start to get interesting. Let's see zoom in on
+the thread-safe implementations of balancers only:
 
+![](shared-memory-access/benchmark-safe-bar-plot.png "Thread-Safe Balancers")
 
 Plain old synchronization better than non-blocking algorithm?
 -------------------------------------------------------------
