@@ -5,24 +5,26 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
-class AtomicIntegerBalancer implements Balancer {
+class AtomicIntegerCAExchangeBalancer implements Balancer {
 
     private final List<String> pool;
 
-    private AtomicInteger next = new AtomicInteger();
+    private final AtomicInteger next = new AtomicInteger();
 
-    public AtomicIntegerBalancer(List<String> pool) {
+    public AtomicIntegerCAExchangeBalancer(List<String> pool) {
         checkArgument(!pool.isEmpty(), "pool is empty");
         this.pool = List.copyOf(pool);
     }
 
     @Override
     public String getNext() {
+        int readIdx = next.get();
         int currIdx, nextIdx;
         do {
-            currIdx = next.get();
+            currIdx = readIdx;
             nextIdx = currIdx + 1 < pool.size() ? currIdx + 1 : 0;
-        } while (!next.compareAndSet(currIdx, nextIdx));
+            readIdx = next.compareAndExchange(currIdx, nextIdx);
+        } while (readIdx != currIdx);
 
         return pool.get(currIdx);
     }

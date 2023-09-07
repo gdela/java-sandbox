@@ -28,13 +28,16 @@ public class BalancersBenchmark {
     @State(Scope.Benchmark)
     public static class MyState {
         @Param({
+                "Dummy1Balancer",
+                "Dummy2Balancer",
                 "NonThreadSafeBalancer",
                 "SynchronizedMethodBalancer",
                 "SynchronizedBlockBalancer",
-                "AtomicIntegerBalancer",
-                "AtomicIntegerExchangeBalancer",
-                "AtomicIntegerWeakCASPlainBalancer",
-                "AtomicIntegerWeakCASReleaseAcquireBalancer",
+                "AtomicIntegerCASetBalancer",
+                "AtomicIntegerCAExchangeBalancer",
+                "AtomicIntegerLambdaBalancer",
+                // "AtomicIntegerWeakCASPlainBalancer",
+                // "AtomicIntegerWeakCASReleaseAcquireBalancer",
                 "SemaphoreBalancer",
         })
         public String balancerClass;

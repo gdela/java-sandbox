@@ -9,7 +9,7 @@ class AtomicIntegerWeakCASReleaseAcquireBalancer implements Balancer {
 
     private final List<String> pool;
 
-    private AtomicInteger next = new AtomicInteger();
+    private final AtomicInteger next = new AtomicInteger();
 
     public AtomicIntegerWeakCASReleaseAcquireBalancer(List<String> pool) {
         checkArgument(!pool.isEmpty(), "pool is empty");

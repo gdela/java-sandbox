@@ -1,0 +1,1499 @@
+C:\jdk-17.0.8\bin\java.exe -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8 -classpath C:\Wojtek\Workspace\java-sandbox\target\test-classes;C:\Wojtek\Workspace\java-sandbox\target\classes;C:\m2repo\com\google\guava\guava\32.1.2-jre\guava-32.1.2-jre.jar;C:\m2repo\com\google\guava\failureaccess\1.0.1\failureaccess-1.0.1.jar;C:\m2repo\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\m2repo\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\m2repo\org\checkerframework\checker-qual\3.33.0\checker-qual-3.33.0.jar;C:\m2repo\com\google\errorprone\error_prone_annotations\2.18.0\error_prone_annotations-2.18.0.jar;C:\m2repo\com\google\j2objc\j2objc-annotations\2.8\j2objc-annotations-2.8.jar;C:\m2repo\org\junit\jupiter\junit-jupiter-engine\5.10.0\junit-jupiter-engine-5.10.0.jar;C:\m2repo\org\junit\platform\junit-platform-engine\1.10.0\junit-platform-engine-1.10.0.jar;C:\m2repo\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\m2repo\org\junit\platform\junit-platform-commons\1.10.0\junit-platform-commons-1.10.0.jar;C:\m2repo\org\junit\jupiter\junit-jupiter-api\5.10.0\junit-jupiter-api-5.10.0.jar;C:\m2repo\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\m2repo\org\assertj\assertj-core\3.24.2\assertj-core-3.24.2.jar;C:\m2repo\net\bytebuddy\byte-buddy\1.12.21\byte-buddy-1.12.21.jar;C:\m2repo\org\openjdk\jmh\jmh-core\1.37\jmh-core-1.37.jar;C:\m2repo\net\sf\jopt-simple\jopt-simple\5.0.4\jopt-simple-5.0.4.jar;C:\m2repo\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\m2repo\org\openjdk\jmh\jmh-generator-annprocess\1.37\jmh-generator-annprocess-1.37.jar org.openjdk.jmh.Main "pl.gdela.concurrency.BalancersBenchmark.*"
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 16 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._16_threads
+# Parameters: (balancerClass = NonThreadSafeBalancer)
+
+# Run progress: 0,00% complete, ETA 00:35:42
+# Fork: 1 of 1
+# Warmup Iteration   1: 85,249 ops/us
+Iteration   1: 110,082 ops/us
+Iteration   2: 88,857 ops/us
+Iteration   3: 80,668 ops/us
+Iteration   4: 105,014 ops/us
+Iteration   5: 95,115 ops/us
+Iteration   6: 94,695 ops/us
+Iteration   7: 90,425 ops/us
+Iteration   8: 91,883 ops/us
+Iteration   9: 95,524 ops/us
+Iteration  10: 89,264 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._16_threads":
+  94,153 ±(99.9%) 12,625 ops/us [Average]
+  (min, avg, max) = (80,668, 94,153, 110,082), stdev = 8,351
+  CI (99.9%): [81,527, 106,778] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 16 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._16_threads
+# Parameters: (balancerClass = SynchronizedMethodBalancer)
+
+# Run progress: 2,38% complete, ETA 00:37:45
+# Fork: 1 of 1
+# Warmup Iteration   1: 24,818 ops/us
+Iteration   1: 25,959 ops/us
+Iteration   2: 27,091 ops/us
+Iteration   3: 26,684 ops/us
+Iteration   4: 25,877 ops/us
+Iteration   5: 28,774 ops/us
+Iteration   6: 35,922 ops/us
+Iteration   7: 30,909 ops/us
+Iteration   8: 27,479 ops/us
+Iteration   9: 36,543 ops/us
+Iteration  10: 28,963 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._16_threads":
+  29,420 ±(99.9%) 5,900 ops/us [Average]
+  (min, avg, max) = (25,877, 29,420, 36,543), stdev = 3,902
+  CI (99.9%): [23,520, 35,320] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 16 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._16_threads
+# Parameters: (balancerClass = SynchronizedBlockBalancer)
+
+# Run progress: 4,76% complete, ETA 00:35:46
+# Fork: 1 of 1
+# Warmup Iteration   1: 36,388 ops/us
+Iteration   1: 37,869 ops/us
+Iteration   2: 23,937 ops/us
+Iteration   3: 25,559 ops/us
+Iteration   4: 25,104 ops/us
+Iteration   5: 26,983 ops/us
+Iteration   6: 27,427 ops/us
+Iteration   7: 27,585 ops/us
+Iteration   8: 25,044 ops/us
+Iteration   9: 24,128 ops/us
+Iteration  10: 36,667 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._16_threads":
+  28,030 ±(99.9%) 7,620 ops/us [Average]
+  (min, avg, max) = (23,937, 28,030, 37,869), stdev = 5,040
+  CI (99.9%): [20,410, 35,650] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 16 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._16_threads
+# Parameters: (balancerClass = AtomicIntegerCASetBalancer)
+
+# Run progress: 7,14% complete, ETA 00:34:31
+# Fork: 1 of 1
+# Warmup Iteration   1: 10,616 ops/us
+Iteration   1: 10,281 ops/us
+Iteration   2: 10,049 ops/us
+Iteration   3: 10,012 ops/us
+Iteration   4: 8,844 ops/us
+Iteration   5: 10,074 ops/us
+Iteration   6: 11,344 ops/us
+Iteration   7: 10,736 ops/us
+Iteration   8: 10,119 ops/us
+Iteration   9: 10,903 ops/us
+Iteration  10: 8,813 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._16_threads":
+  10,117 ±(99.9%) 1,221 ops/us [Average]
+  (min, avg, max) = (8,813, 10,117, 11,344), stdev = 0,808
+  CI (99.9%): [8,897, 11,338] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 16 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._16_threads
+# Parameters: (balancerClass = AtomicIntegerCAExchangeBalancer)
+
+# Run progress: 9,52% complete, ETA 00:33:54
+# Fork: 1 of 1
+# Warmup Iteration   1: 9,913 ops/us
+Iteration   1: 10,604 ops/us
+Iteration   2: 9,817 ops/us
+Iteration   3: 9,660 ops/us
+Iteration   4: 9,575 ops/us
+Iteration   5: 10,417 ops/us
+Iteration   6: 8,753 ops/us
+Iteration   7: 10,637 ops/us
+Iteration   8: 10,460 ops/us
+Iteration   9: 8,521 ops/us
+Iteration  10: 16,980 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._16_threads":
+  10,542 ±(99.9%) 3,599 ops/us [Average]
+  (min, avg, max) = (8,521, 10,542, 16,980), stdev = 2,381
+  CI (99.9%): [6,943, 14,141] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 16 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._16_threads
+# Parameters: (balancerClass = AtomicIntegerLambdaBalancer)
+
+# Run progress: 11,90% complete, ETA 00:33:08
+# Fork: 1 of 1
+# Warmup Iteration   1: 11,073 ops/us
+Iteration   1: 11,392 ops/us
+Iteration   2: 10,481 ops/us
+Iteration   3: 8,959 ops/us
+Iteration   4: 10,593 ops/us
+Iteration   5: 9,611 ops/us
+Iteration   6: 9,313 ops/us
+Iteration   7: 12,315 ops/us
+Iteration   8: 11,183 ops/us
+Iteration   9: 8,969 ops/us
+Iteration  10: 7,783 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._16_threads":
+  10,060 ±(99.9%) 2,074 ops/us [Average]
+  (min, avg, max) = (7,783, 10,060, 12,315), stdev = 1,372
+  CI (99.9%): [7,986, 12,133] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 16 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._16_threads
+# Parameters: (balancerClass = SemaphoreBalancer)
+
+# Run progress: 14,29% complete, ETA 00:32:20
+# Fork: 1 of 1
+# Warmup Iteration   1: 30,087 ops/us
+Iteration   1: 29,444 ops/us
+Iteration   2: 33,788 ops/us
+Iteration   3: 31,540 ops/us
+Iteration   4: 34,318 ops/us
+Iteration   5: 33,801 ops/us
+Iteration   6: 35,172 ops/us
+Iteration   7: 35,454 ops/us
+Iteration   8: 36,175 ops/us
+Iteration   9: 34,178 ops/us
+Iteration  10: 36,001 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._16_threads":
+  33,987 ±(99.9%) 3,157 ops/us [Average]
+  (min, avg, max) = (29,444, 33,987, 36,175), stdev = 2,088
+  CI (99.9%): [30,830, 37,144] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._1_thread
+# Parameters: (balancerClass = NonThreadSafeBalancer)
+
+# Run progress: 16,67% complete, ETA 00:31:16
+# Fork: 1 of 1
+# Warmup Iteration   1: 460,865 ops/us
+Iteration   1: 462,493 ops/us
+Iteration   2: 487,044 ops/us
+Iteration   3: 486,337 ops/us
+Iteration   4: 486,760 ops/us
+Iteration   5: 485,855 ops/us
+Iteration   6: 486,324 ops/us
+Iteration   7: 486,959 ops/us
+Iteration   8: 487,104 ops/us
+Iteration   9: 485,985 ops/us
+Iteration  10: 482,995 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._1_thread":
+  483,786 ±(99.9%) 11,454 ops/us [Average]
+  (min, avg, max) = (462,493, 483,786, 487,104), stdev = 7,576
+  CI (99.9%): [472,331, 495,240] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._1_thread
+# Parameters: (balancerClass = SynchronizedMethodBalancer)
+
+# Run progress: 19,05% complete, ETA 00:30:15
+# Fork: 1 of 1
+# Warmup Iteration   1: 55,831 ops/us
+Iteration   1: 56,260 ops/us
+Iteration   2: 56,942 ops/us
+Iteration   3: 57,223 ops/us
+Iteration   4: 57,195 ops/us
+Iteration   5: 57,168 ops/us
+Iteration   6: 57,160 ops/us
+Iteration   7: 57,215 ops/us
+Iteration   8: 56,297 ops/us
+Iteration   9: 57,172 ops/us
+Iteration  10: 57,108 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._1_thread":
+  56,974 ±(99.9%) 0,568 ops/us [Average]
+  (min, avg, max) = (56,260, 56,974, 57,223), stdev = 0,375
+  CI (99.9%): [56,406, 57,542] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._1_thread
+# Parameters: (balancerClass = SynchronizedBlockBalancer)
+
+# Run progress: 21,43% complete, ETA 00:29:17
+# Fork: 1 of 1
+# Warmup Iteration   1: 55,966 ops/us
+Iteration   1: 56,233 ops/us
+Iteration   2: 57,096 ops/us
+Iteration   3: 56,190 ops/us
+Iteration   4: 57,151 ops/us
+Iteration   5: 57,206 ops/us
+Iteration   6: 57,177 ops/us
+Iteration   7: 57,164 ops/us
+Iteration   8: 57,118 ops/us
+Iteration   9: 57,182 ops/us
+Iteration  10: 57,143 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._1_thread":
+  56,966 ±(99.9%) 0,603 ops/us [Average]
+  (min, avg, max) = (56,190, 56,966, 57,206), stdev = 0,399
+  CI (99.9%): [56,363, 57,569] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._1_thread
+# Parameters: (balancerClass = AtomicIntegerCASetBalancer)
+
+# Run progress: 23,81% complete, ETA 00:28:19
+# Fork: 1 of 1
+# Warmup Iteration   1: 101,027 ops/us
+Iteration   1: 111,040 ops/us
+Iteration   2: 110,902 ops/us
+Iteration   3: 110,925 ops/us
+Iteration   4: 111,073 ops/us
+Iteration   5: 111,060 ops/us
+Iteration   6: 111,054 ops/us
+Iteration   7: 110,835 ops/us
+Iteration   8: 110,968 ops/us
+Iteration   9: 111,046 ops/us
+Iteration  10: 110,854 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._1_thread":
+  110,976 ±(99.9%) 0,137 ops/us [Average]
+  (min, avg, max) = (110,835, 110,976, 111,073), stdev = 0,091
+  CI (99.9%): [110,838, 111,113] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._1_thread
+# Parameters: (balancerClass = AtomicIntegerCAExchangeBalancer)
+
+# Run progress: 26,19% complete, ETA 00:27:23
+# Fork: 1 of 1
+# Warmup Iteration   1: 109,141 ops/us
+Iteration   1: 110,896 ops/us
+Iteration   2: 111,024 ops/us
+Iteration   3: 111,168 ops/us
+Iteration   4: 110,372 ops/us
+Iteration   5: 110,928 ops/us
+Iteration   6: 110,828 ops/us
+Iteration   7: 110,990 ops/us
+Iteration   8: 110,884 ops/us
+Iteration   9: 111,020 ops/us
+Iteration  10: 110,990 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._1_thread":
+  110,910 ±(99.9%) 0,320 ops/us [Average]
+  (min, avg, max) = (110,372, 110,910, 111,168), stdev = 0,211
+  CI (99.9%): [110,591, 111,230] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._1_thread
+# Parameters: (balancerClass = AtomicIntegerLambdaBalancer)
+
+# Run progress: 28,57% complete, ETA 00:26:27
+# Fork: 1 of 1
+# Warmup Iteration   1: 113,104 ops/us
+Iteration   1: 114,102 ops/us
+Iteration   2: 114,540 ops/us
+Iteration   3: 114,404 ops/us
+Iteration   4: 114,404 ops/us
+Iteration   5: 110,210 ops/us
+Iteration   6: 112,956 ops/us
+Iteration   7: 113,867 ops/us
+Iteration   8: 114,008 ops/us
+Iteration   9: 114,142 ops/us
+Iteration  10: 114,022 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._1_thread":
+  113,666 ±(99.9%) 1,952 ops/us [Average]
+  (min, avg, max) = (110,210, 113,666, 114,540), stdev = 1,291
+  CI (99.9%): [111,713, 115,618] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._1_thread
+# Parameters: (balancerClass = SemaphoreBalancer)
+
+# Run progress: 30,95% complete, ETA 00:25:32
+# Fork: 1 of 1
+# Warmup Iteration   1: 57,907 ops/us
+Iteration   1: 58,620 ops/us
+Iteration   2: 58,688 ops/us
+Iteration   3: 58,713 ops/us
+Iteration   4: 58,873 ops/us
+Iteration   5: 58,746 ops/us
+Iteration   6: 58,856 ops/us
+Iteration   7: 58,795 ops/us
+Iteration   8: 58,746 ops/us
+Iteration   9: 58,854 ops/us
+Iteration  10: 58,798 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._1_thread":
+  58,769 ±(99.9%) 0,123 ops/us [Average]
+  (min, avg, max) = (58,620, 58,769, 58,873), stdev = 0,082
+  CI (99.9%): [58,645, 58,892] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 2 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._2_threads
+# Parameters: (balancerClass = NonThreadSafeBalancer)
+
+# Run progress: 33,33% complete, ETA 00:24:37
+# Fork: 1 of 1
+# Warmup Iteration   1: 123,615 ops/us
+Iteration   1: 121,831 ops/us
+Iteration   2: 132,198 ops/us
+Iteration   3: 129,343 ops/us
+Iteration   4: 132,546 ops/us
+Iteration   5: 127,913 ops/us
+Iteration   6: 120,631 ops/us
+Iteration   7: 129,402 ops/us
+Iteration   8: 127,517 ops/us
+Iteration   9: 133,059 ops/us
+Iteration  10: 133,343 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._2_threads":
+  128,778 ±(99.9%) 6,812 ops/us [Average]
+  (min, avg, max) = (120,631, 128,778, 133,343), stdev = 4,506
+  CI (99.9%): [121,966, 135,591] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 2 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._2_threads
+# Parameters: (balancerClass = SynchronizedMethodBalancer)
+
+# Run progress: 35,71% complete, ETA 00:23:43
+# Fork: 1 of 1
+# Warmup Iteration   1: 28,390 ops/us
+Iteration   1: 37,648 ops/us
+Iteration   2: 34,566 ops/us
+Iteration   3: 37,852 ops/us
+Iteration   4: 33,632 ops/us
+Iteration   5: 32,270 ops/us
+Iteration   6: 33,454 ops/us
+Iteration   7: 37,572 ops/us
+Iteration   8: 32,501 ops/us
+Iteration   9: 28,509 ops/us
+Iteration  10: 29,046 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._2_threads":
+  33,705 ±(99.9%) 5,058 ops/us [Average]
+  (min, avg, max) = (28,509, 33,705, 37,852), stdev = 3,345
+  CI (99.9%): [28,647, 38,763] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 2 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._2_threads
+# Parameters: (balancerClass = SynchronizedBlockBalancer)
+
+# Run progress: 38,10% complete, ETA 00:22:49
+# Fork: 1 of 1
+# Warmup Iteration   1: 41,346 ops/us
+Iteration   1: 37,409 ops/us
+Iteration   2: 32,356 ops/us
+Iteration   3: 33,506 ops/us
+Iteration   4: 37,753 ops/us
+Iteration   5: 27,917 ops/us
+Iteration   6: 35,187 ops/us
+Iteration   7: 35,547 ops/us
+Iteration   8: 33,029 ops/us
+Iteration   9: 29,768 ops/us
+Iteration  10: 37,473 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._2_threads":
+  33,995 ±(99.9%) 5,049 ops/us [Average]
+  (min, avg, max) = (27,917, 33,995, 37,753), stdev = 3,340
+  CI (99.9%): [28,946, 39,043] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 2 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._2_threads
+# Parameters: (balancerClass = AtomicIntegerCASetBalancer)
+
+# Run progress: 40,48% complete, ETA 00:21:55
+# Fork: 1 of 1
+# Warmup Iteration   1: 18,377 ops/us
+Iteration   1: 24,564 ops/us
+Iteration   2: 19,428 ops/us
+Iteration   3: 19,316 ops/us
+Iteration   4: 19,538 ops/us
+Iteration   5: 20,905 ops/us
+Iteration   6: 18,920 ops/us
+Iteration   7: 19,033 ops/us
+Iteration   8: 24,833 ops/us
+Iteration   9: 19,602 ops/us
+Iteration  10: 19,308 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._2_threads":
+  20,545 ±(99.9%) 3,410 ops/us [Average]
+  (min, avg, max) = (18,920, 20,545, 24,833), stdev = 2,256
+  CI (99.9%): [17,134, 23,955] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 2 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._2_threads
+# Parameters: (balancerClass = AtomicIntegerCAExchangeBalancer)
+
+# Run progress: 42,86% complete, ETA 00:21:01
+# Fork: 1 of 1
+# Warmup Iteration   1: 19,251 ops/us
+Iteration   1: 19,376 ops/us
+Iteration   2: 19,360 ops/us
+Iteration   3: 27,903 ops/us
+Iteration   4: 26,752 ops/us
+Iteration   5: 19,000 ops/us
+Iteration   6: 19,072 ops/us
+Iteration   7: 18,992 ops/us
+Iteration   8: 18,717 ops/us
+Iteration   9: 18,879 ops/us
+Iteration  10: 19,142 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._2_threads":
+  20,719 ±(99.9%) 5,290 ops/us [Average]
+  (min, avg, max) = (18,717, 20,719, 27,903), stdev = 3,499
+  CI (99.9%): [15,429, 26,009] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 2 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._2_threads
+# Parameters: (balancerClass = AtomicIntegerLambdaBalancer)
+
+# Run progress: 45,24% complete, ETA 00:20:08
+# Fork: 1 of 1
+# Warmup Iteration   1: 25,487 ops/us
+Iteration   1: 21,958 ops/us
+Iteration   2: 23,332 ops/us
+Iteration   3: 22,920 ops/us
+Iteration   4: 21,063 ops/us
+Iteration   5: 21,500 ops/us
+Iteration   6: 20,094 ops/us
+Iteration   7: 20,075 ops/us
+Iteration   8: 21,076 ops/us
+Iteration   9: 18,999 ops/us
+Iteration  10: 19,940 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._2_threads":
+  21,096 ±(99.9%) 2,079 ops/us [Average]
+  (min, avg, max) = (18,999, 21,096, 23,332), stdev = 1,375
+  CI (99.9%): [19,017, 23,174] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 2 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._2_threads
+# Parameters: (balancerClass = SemaphoreBalancer)
+
+# Run progress: 47,62% complete, ETA 00:19:15
+# Fork: 1 of 1
+# Warmup Iteration   1: 25,005 ops/us
+Iteration   1: 24,545 ops/us
+Iteration   2: 26,832 ops/us
+Iteration   3: 25,795 ops/us
+Iteration   4: 25,515 ops/us
+Iteration   5: 25,506 ops/us
+Iteration   6: 28,514 ops/us
+Iteration   7: 28,775 ops/us
+Iteration   8: 28,321 ops/us
+Iteration   9: 28,529 ops/us
+Iteration  10: 28,348 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._2_threads":
+  27,068 ±(99.9%) 2,430 ops/us [Average]
+  (min, avg, max) = (24,545, 27,068, 28,775), stdev = 1,607
+  CI (99.9%): [24,638, 29,498] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 4 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._4_threads
+# Parameters: (balancerClass = NonThreadSafeBalancer)
+
+# Run progress: 50,00% complete, ETA 00:18:22
+# Fork: 1 of 1
+# Warmup Iteration   1: 94,559 ops/us
+Iteration   1: 100,815 ops/us
+Iteration   2: 101,556 ops/us
+Iteration   3: 101,199 ops/us
+Iteration   4: 107,884 ops/us
+Iteration   5: 108,424 ops/us
+Iteration   6: 112,373 ops/us
+Iteration   7: 116,251 ops/us
+Iteration   8: 101,649 ops/us
+Iteration   9: 110,999 ops/us
+Iteration  10: 90,617 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._4_threads":
+  105,177 ±(99.9%) 11,253 ops/us [Average]
+  (min, avg, max) = (90,617, 105,177, 116,251), stdev = 7,443
+  CI (99.9%): [93,924, 116,429] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 4 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._4_threads
+# Parameters: (balancerClass = SynchronizedMethodBalancer)
+
+# Run progress: 52,38% complete, ETA 00:17:29
+# Fork: 1 of 1
+# Warmup Iteration   1: 31,779 ops/us
+Iteration   1: 29,736 ops/us
+Iteration   2: 26,858 ops/us
+Iteration   3: 37,518 ops/us
+Iteration   4: 27,224 ops/us
+Iteration   5: 27,321 ops/us
+Iteration   6: 31,818 ops/us
+Iteration   7: 37,980 ops/us
+Iteration   8: 37,942 ops/us
+Iteration   9: 36,215 ops/us
+Iteration  10: 33,415 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._4_threads":
+  32,603 ±(99.9%) 7,018 ops/us [Average]
+  (min, avg, max) = (26,858, 32,603, 37,980), stdev = 4,642
+  CI (99.9%): [25,584, 39,621] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 4 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._4_threads
+# Parameters: (balancerClass = SynchronizedBlockBalancer)
+
+# Run progress: 54,76% complete, ETA 00:16:36
+# Fork: 1 of 1
+# Warmup Iteration   1: 29,466 ops/us
+Iteration   1: 30,850 ops/us
+Iteration   2: 35,390 ops/us
+Iteration   3: 36,694 ops/us
+Iteration   4: 32,928 ops/us
+Iteration   5: 24,262 ops/us
+Iteration   6: 29,044 ops/us
+Iteration   7: 36,496 ops/us
+Iteration   8: 25,905 ops/us
+Iteration   9: 27,266 ops/us
+Iteration  10: 24,973 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._4_threads":
+  30,381 ±(99.9%) 7,255 ops/us [Average]
+  (min, avg, max) = (24,262, 30,381, 36,694), stdev = 4,799
+  CI (99.9%): [23,126, 37,636] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 4 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._4_threads
+# Parameters: (balancerClass = AtomicIntegerCASetBalancer)
+
+# Run progress: 57,14% complete, ETA 00:15:43
+# Fork: 1 of 1
+# Warmup Iteration   1: 11,390 ops/us
+Iteration   1: 11,062 ops/us
+Iteration   2: 11,572 ops/us
+Iteration   3: 10,124 ops/us
+Iteration   4: 11,131 ops/us
+Iteration   5: 11,211 ops/us
+Iteration   6: 13,514 ops/us
+Iteration   7: 11,114 ops/us
+Iteration   8: 9,237 ops/us
+Iteration   9: 11,226 ops/us
+Iteration  10: 11,202 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._4_threads":
+  11,139 ±(99.9%) 1,633 ops/us [Average]
+  (min, avg, max) = (9,237, 11,139, 13,514), stdev = 1,080
+  CI (99.9%): [9,507, 12,772] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 4 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._4_threads
+# Parameters: (balancerClass = AtomicIntegerCAExchangeBalancer)
+
+# Run progress: 59,52% complete, ETA 00:14:50
+# Fork: 1 of 1
+# Warmup Iteration   1: 10,879 ops/us
+Iteration   1: 11,419 ops/us
+Iteration   2: 11,174 ops/us
+Iteration   3: 10,964 ops/us
+Iteration   4: 10,876 ops/us
+Iteration   5: 10,953 ops/us
+Iteration   6: 10,999 ops/us
+Iteration   7: 11,509 ops/us
+Iteration   8: 10,031 ops/us
+Iteration   9: 10,977 ops/us
+Iteration  10: 10,064 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._4_threads":
+  10,897 ±(99.9%) 0,746 ops/us [Average]
+  (min, avg, max) = (10,031, 10,897, 11,509), stdev = 0,494
+  CI (99.9%): [10,151, 11,643] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 4 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._4_threads
+# Parameters: (balancerClass = AtomicIntegerLambdaBalancer)
+
+# Run progress: 61,90% complete, ETA 00:13:57
+# Fork: 1 of 1
+# Warmup Iteration   1: 12,285 ops/us
+Iteration   1: 11,948 ops/us
+Iteration   2: 11,629 ops/us
+Iteration   3: 10,081 ops/us
+Iteration   4: 11,129 ops/us
+Iteration   5: 11,024 ops/us
+Iteration   6: 12,491 ops/us
+Iteration   7: 11,733 ops/us
+Iteration   8: 12,827 ops/us
+Iteration   9: 12,272 ops/us
+Iteration  10: 12,144 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._4_threads":
+  11,728 ±(99.9%) 1,222 ops/us [Average]
+  (min, avg, max) = (10,081, 11,728, 12,827), stdev = 0,809
+  CI (99.9%): [10,505, 12,950] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 4 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._4_threads
+# Parameters: (balancerClass = SemaphoreBalancer)
+
+# Run progress: 64,29% complete, ETA 00:13:05
+# Fork: 1 of 1
+# Warmup Iteration   1: 29,295 ops/us
+Iteration   1: 30,311 ops/us
+Iteration   2: 34,071 ops/us
+Iteration   3: 34,391 ops/us
+Iteration   4: 34,583 ops/us
+Iteration   5: 33,713 ops/us
+Iteration   6: 34,777 ops/us
+Iteration   7: 34,806 ops/us
+Iteration   8: 34,922 ops/us
+Iteration   9: 34,568 ops/us
+Iteration  10: 34,698 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._4_threads":
+  34,084 ±(99.9%) 2,080 ops/us [Average]
+  (min, avg, max) = (30,311, 34,084, 34,922), stdev = 1,375
+  CI (99.9%): [32,005, 36,164] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 6 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._6_threads
+# Parameters: (balancerClass = NonThreadSafeBalancer)
+
+# Run progress: 66,67% complete, ETA 00:12:12
+# Fork: 1 of 1
+# Warmup Iteration   1: 85,149 ops/us
+Iteration   1: 83,314 ops/us
+Iteration   2: 85,463 ops/us
+Iteration   3: 88,034 ops/us
+Iteration   4: 92,316 ops/us
+Iteration   5: 85,518 ops/us
+Iteration   6: 88,400 ops/us
+Iteration   7: 89,903 ops/us
+Iteration   8: 89,901 ops/us
+Iteration   9: 85,496 ops/us
+Iteration  10: 90,208 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._6_threads":
+  87,855 ±(99.9%) 4,262 ops/us [Average]
+  (min, avg, max) = (83,314, 87,855, 92,316), stdev = 2,819
+  CI (99.9%): [83,594, 92,117] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 6 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._6_threads
+# Parameters: (balancerClass = SynchronizedMethodBalancer)
+
+# Run progress: 69,05% complete, ETA 00:11:20
+# Fork: 1 of 1
+# Warmup Iteration   1: 25,135 ops/us
+Iteration   1: 29,876 ops/us
+Iteration   2: 27,131 ops/us
+Iteration   3: 32,291 ops/us
+Iteration   4: 26,082 ops/us
+Iteration   5: 30,743 ops/us
+Iteration   6: 31,618 ops/us
+Iteration   7: 29,562 ops/us
+Iteration   8: 37,088 ops/us
+Iteration   9: 28,502 ops/us
+Iteration  10: 35,380 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._6_threads":
+  30,827 ±(99.9%) 5,208 ops/us [Average]
+  (min, avg, max) = (26,082, 30,827, 37,088), stdev = 3,445
+  CI (99.9%): [25,619, 36,035] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 6 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._6_threads
+# Parameters: (balancerClass = SynchronizedBlockBalancer)
+
+# Run progress: 71,43% complete, ETA 00:10:27
+# Fork: 1 of 1
+# Warmup Iteration   1: 27,649 ops/us
+Iteration   1: 25,435 ops/us
+Iteration   2: 27,341 ops/us
+Iteration   3: 28,196 ops/us
+Iteration   4: 25,607 ops/us
+Iteration   5: 30,470 ops/us
+Iteration   6: 28,036 ops/us
+Iteration   7: 35,176 ops/us
+Iteration   8: 28,314 ops/us
+Iteration   9: 24,710 ops/us
+Iteration  10: 35,383 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._6_threads":
+  28,867 ±(99.9%) 5,708 ops/us [Average]
+  (min, avg, max) = (24,710, 28,867, 35,383), stdev = 3,776
+  CI (99.9%): [23,159, 34,575] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 6 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._6_threads
+# Parameters: (balancerClass = AtomicIntegerCASetBalancer)
+
+# Run progress: 73,81% complete, ETA 00:09:35
+# Fork: 1 of 1
+# Warmup Iteration   1: 10,746 ops/us
+Iteration   1: 10,597 ops/us
+Iteration   2: 10,011 ops/us
+Iteration   3: 10,210 ops/us
+Iteration   4: 11,118 ops/us
+Iteration   5: 9,326 ops/us
+Iteration   6: 10,037 ops/us
+Iteration   7: 11,366 ops/us
+Iteration   8: 9,720 ops/us
+Iteration   9: 11,393 ops/us
+Iteration  10: 8,278 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._6_threads":
+  10,206 ±(99.9%) 1,472 ops/us [Average]
+  (min, avg, max) = (8,278, 10,206, 11,393), stdev = 0,974
+  CI (99.9%): [8,734, 11,678] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 6 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._6_threads
+# Parameters: (balancerClass = AtomicIntegerCAExchangeBalancer)
+
+# Run progress: 76,19% complete, ETA 00:08:43
+# Fork: 1 of 1
+# Warmup Iteration   1: 7,543 ops/us
+Iteration   1: 10,626 ops/us
+Iteration   2: 10,101 ops/us
+Iteration   3: 9,678 ops/us
+Iteration   4: 9,161 ops/us
+Iteration   5: 8,260 ops/us
+Iteration   6: 14,992 ops/us
+Iteration   7: 14,749 ops/us
+Iteration   8: 7,630 ops/us
+Iteration   9: 8,588 ops/us
+Iteration  10: 10,049 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._6_threads":
+  10,383 ±(99.9%) 3,833 ops/us [Average]
+  (min, avg, max) = (7,630, 10,383, 14,992), stdev = 2,535
+  CI (99.9%): [6,550, 14,216] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 6 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._6_threads
+# Parameters: (balancerClass = AtomicIntegerLambdaBalancer)
+
+# Run progress: 78,57% complete, ETA 00:07:50
+# Fork: 1 of 1
+# Warmup Iteration   1: 10,471 ops/us
+Iteration   1: 10,463 ops/us
+Iteration   2: 10,432 ops/us
+Iteration   3: 10,746 ops/us
+Iteration   4: 10,510 ops/us
+Iteration   5: 11,910 ops/us
+Iteration   6: 9,024 ops/us
+Iteration   7: 10,217 ops/us
+Iteration   8: 9,790 ops/us
+Iteration   9: 10,653 ops/us
+Iteration  10: 9,334 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._6_threads":
+  10,308 ±(99.9%) 1,217 ops/us [Average]
+  (min, avg, max) = (9,024, 10,308, 11,910), stdev = 0,805
+  CI (99.9%): [9,091, 11,525] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 6 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._6_threads
+# Parameters: (balancerClass = SemaphoreBalancer)
+
+# Run progress: 80,95% complete, ETA 00:06:58
+# Fork: 1 of 1
+# Warmup Iteration   1: 28,464 ops/us
+Iteration   1: 30,854 ops/us
+Iteration   2: 31,437 ops/us
+Iteration   3: 30,553 ops/us
+Iteration   4: 34,454 ops/us
+Iteration   5: 33,110 ops/us
+Iteration   6: 33,931 ops/us
+Iteration   7: 33,894 ops/us
+Iteration   8: 34,223 ops/us
+Iteration   9: 34,478 ops/us
+Iteration  10: 34,269 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._6_threads":
+  33,120 ±(99.9%) 2,363 ops/us [Average]
+  (min, avg, max) = (30,553, 33,120, 34,478), stdev = 1,563
+  CI (99.9%): [30,758, 35,483] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._8_threads
+# Parameters: (balancerClass = NonThreadSafeBalancer)
+
+# Run progress: 83,33% complete, ETA 00:06:06
+# Fork: 1 of 1
+# Warmup Iteration   1: 80,679 ops/us
+Iteration   1: 81,752 ops/us
+Iteration   2: 87,945 ops/us
+Iteration   3: 91,805 ops/us
+Iteration   4: 92,195 ops/us
+Iteration   5: 88,170 ops/us
+Iteration   6: 91,840 ops/us
+Iteration   7: 93,460 ops/us
+Iteration   8: 94,168 ops/us
+Iteration   9: 86,359 ops/us
+Iteration  10: 90,044 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._8_threads":
+  89,774 ±(99.9%) 5,727 ops/us [Average]
+  (min, avg, max) = (81,752, 89,774, 94,168), stdev = 3,788
+  CI (99.9%): [84,047, 95,501] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._8_threads
+# Parameters: (balancerClass = SynchronizedMethodBalancer)
+
+# Run progress: 85,71% complete, ETA 00:05:13
+# Fork: 1 of 1
+# Warmup Iteration   1: 38,963 ops/us
+Iteration   1: 38,156 ops/us
+Iteration   2: 27,458 ops/us
+Iteration   3: 27,003 ops/us
+Iteration   4: 26,878 ops/us
+Iteration   5: 27,972 ops/us
+Iteration   6: 38,090 ops/us
+Iteration   7: 37,017 ops/us
+Iteration   8: 28,774 ops/us
+Iteration   9: 30,104 ops/us
+Iteration  10: 25,922 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._8_threads":
+  30,737 ±(99.9%) 7,529 ops/us [Average]
+  (min, avg, max) = (25,922, 30,737, 38,156), stdev = 4,980
+  CI (99.9%): [23,208, 38,267] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._8_threads
+# Parameters: (balancerClass = SynchronizedBlockBalancer)
+
+# Run progress: 88,10% complete, ETA 00:04:21
+# Fork: 1 of 1
+# Warmup Iteration   1: 23,528 ops/us
+Iteration   1: 30,429 ops/us
+Iteration   2: 37,553 ops/us
+Iteration   3: 25,358 ops/us
+Iteration   4: 23,433 ops/us
+Iteration   5: 25,066 ops/us
+Iteration   6: 29,204 ops/us
+Iteration   7: 27,653 ops/us
+Iteration   8: 24,059 ops/us
+Iteration   9: 35,429 ops/us
+Iteration  10: 34,864 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._8_threads":
+  29,305 ±(99.9%) 7,742 ops/us [Average]
+  (min, avg, max) = (23,433, 29,305, 37,553), stdev = 5,121
+  CI (99.9%): [21,563, 37,047] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._8_threads
+# Parameters: (balancerClass = AtomicIntegerCASetBalancer)
+
+# Run progress: 90,48% complete, ETA 00:03:29
+# Fork: 1 of 1
+# Warmup Iteration   1: 9,716 ops/us
+Iteration   1: 10,703 ops/us
+Iteration   2: 11,275 ops/us
+Iteration   3: 9,579 ops/us
+Iteration   4: 9,930 ops/us
+Iteration   5: 8,410 ops/us
+Iteration   6: 8,526 ops/us
+Iteration   7: 8,909 ops/us
+Iteration   8: 10,593 ops/us
+Iteration   9: 10,144 ops/us
+Iteration  10: 11,321 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._8_threads":
+  9,939 ±(99.9%) 1,615 ops/us [Average]
+  (min, avg, max) = (8,410, 9,939, 11,321), stdev = 1,068
+  CI (99.9%): [8,324, 11,554] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._8_threads
+# Parameters: (balancerClass = AtomicIntegerCAExchangeBalancer)
+
+# Run progress: 92,86% complete, ETA 00:02:36
+# Fork: 1 of 1
+# Warmup Iteration   1: 10,359 ops/us
+Iteration   1: 16,629 ops/us
+Iteration   2: 9,785 ops/us
+Iteration   3: 9,413 ops/us
+Iteration   4: 9,632 ops/us
+Iteration   5: 9,324 ops/us
+Iteration   6: 10,367 ops/us
+Iteration   7: 9,411 ops/us
+Iteration   8: 10,341 ops/us
+Iteration   9: 10,423 ops/us
+Iteration  10: 11,251 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._8_threads":
+  10,658 ±(99.9%) 3,303 ops/us [Average]
+  (min, avg, max) = (9,324, 10,658, 16,629), stdev = 2,184
+  CI (99.9%): [7,355, 13,960] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._8_threads
+# Parameters: (balancerClass = AtomicIntegerLambdaBalancer)
+
+# Run progress: 95,24% complete, ETA 00:01:44
+# Fork: 1 of 1
+# Warmup Iteration   1: 10,963 ops/us
+Iteration   1: 11,082 ops/us
+Iteration   2: 8,575 ops/us
+Iteration   3: 8,708 ops/us
+Iteration   4: 9,568 ops/us
+Iteration   5: 11,250 ops/us
+Iteration   6: 9,025 ops/us
+Iteration   7: 9,560 ops/us
+Iteration   8: 9,503 ops/us
+Iteration   9: 10,124 ops/us
+Iteration  10: 9,052 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._8_threads":
+  9,644 ±(99.9%) 1,395 ops/us [Average]
+  (min, avg, max) = (8,575, 9,644, 11,250), stdev = 0,923
+  CI (99.9%): [8,249, 11,040] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.8, OpenJDK 64-Bit Server VM, 17.0.8+7
+# VM invoker: C:\jdk-17.0.8\bin\java.exe
+# VM options: -javaagent:C:\idea-2021.1\lib\idea_rt.jar=53418:C:\idea-2021.1\bin -Dfile.encoding=UTF-8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 1 iterations, 1 s each
+# Measurement: 10 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: pl.gdela.concurrency.BalancersBenchmark._8_threads
+# Parameters: (balancerClass = SemaphoreBalancer)
+
+# Run progress: 97,62% complete, ETA 00:00:52
+# Fork: 1 of 1
+# Warmup Iteration   1: 29,633 ops/us
+Iteration   1: 31,339 ops/us
+Iteration   2: 34,899 ops/us
+Iteration   3: 35,691 ops/us
+Iteration   4: 35,877 ops/us
+Iteration   5: 34,316 ops/us
+Iteration   6: 35,547 ops/us
+Iteration   7: 35,410 ops/us
+Iteration   8: 35,611 ops/us
+Iteration   9: 35,637 ops/us
+Iteration  10: 35,635 ops/us
+
+
+Result "pl.gdela.concurrency.BalancersBenchmark._8_threads":
+  34,996 ±(99.9%) 2,064 ops/us [Average]
+  (min, avg, max) = (31,339, 34,996, 35,877), stdev = 1,365
+  CI (99.9%): [32,932, 37,060] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:36:36
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                                       (balancerClass)   Mode  Cnt    Score    Error   Units
+BalancersBenchmark._16_threads            NonThreadSafeBalancer  thrpt   10   94,153 ± 12,625  ops/us
+BalancersBenchmark._16_threads       SynchronizedMethodBalancer  thrpt   10   29,420 ±  5,900  ops/us
+BalancersBenchmark._16_threads        SynchronizedBlockBalancer  thrpt   10   28,030 ±  7,620  ops/us
+BalancersBenchmark._16_threads       AtomicIntegerCASetBalancer  thrpt   10   10,117 ±  1,221  ops/us
+BalancersBenchmark._16_threads  AtomicIntegerCAExchangeBalancer  thrpt   10   10,542 ±  3,599  ops/us
+BalancersBenchmark._16_threads      AtomicIntegerLambdaBalancer  thrpt   10   10,060 ±  2,074  ops/us
+BalancersBenchmark._16_threads                SemaphoreBalancer  thrpt   10   33,987 ±  3,157  ops/us
+BalancersBenchmark._1_thread              NonThreadSafeBalancer  thrpt   10  483,786 ± 11,454  ops/us
+BalancersBenchmark._1_thread         SynchronizedMethodBalancer  thrpt   10   56,974 ±  0,568  ops/us
+BalancersBenchmark._1_thread          SynchronizedBlockBalancer  thrpt   10   56,966 ±  0,603  ops/us
+BalancersBenchmark._1_thread         AtomicIntegerCASetBalancer  thrpt   10  110,976 ±  0,137  ops/us
+BalancersBenchmark._1_thread    AtomicIntegerCAExchangeBalancer  thrpt   10  110,910 ±  0,320  ops/us
+BalancersBenchmark._1_thread        AtomicIntegerLambdaBalancer  thrpt   10  113,666 ±  1,952  ops/us
+BalancersBenchmark._1_thread                  SemaphoreBalancer  thrpt   10   58,769 ±  0,123  ops/us
+BalancersBenchmark._2_threads             NonThreadSafeBalancer  thrpt   10  128,778 ±  6,812  ops/us
+BalancersBenchmark._2_threads        SynchronizedMethodBalancer  thrpt   10   33,705 ±  5,058  ops/us
+BalancersBenchmark._2_threads         SynchronizedBlockBalancer  thrpt   10   33,995 ±  5,049  ops/us
+BalancersBenchmark._2_threads        AtomicIntegerCASetBalancer  thrpt   10   20,545 ±  3,410  ops/us
+BalancersBenchmark._2_threads   AtomicIntegerCAExchangeBalancer  thrpt   10   20,719 ±  5,290  ops/us
+BalancersBenchmark._2_threads       AtomicIntegerLambdaBalancer  thrpt   10   21,096 ±  2,079  ops/us
+BalancersBenchmark._2_threads                 SemaphoreBalancer  thrpt   10   27,068 ±  2,430  ops/us
+BalancersBenchmark._4_threads             NonThreadSafeBalancer  thrpt   10  105,177 ± 11,253  ops/us
+BalancersBenchmark._4_threads        SynchronizedMethodBalancer  thrpt   10   32,603 ±  7,018  ops/us
+BalancersBenchmark._4_threads         SynchronizedBlockBalancer  thrpt   10   30,381 ±  7,255  ops/us
+BalancersBenchmark._4_threads        AtomicIntegerCASetBalancer  thrpt   10   11,139 ±  1,633  ops/us
+BalancersBenchmark._4_threads   AtomicIntegerCAExchangeBalancer  thrpt   10   10,897 ±  0,746  ops/us
+BalancersBenchmark._4_threads       AtomicIntegerLambdaBalancer  thrpt   10   11,728 ±  1,222  ops/us
+BalancersBenchmark._4_threads                 SemaphoreBalancer  thrpt   10   34,084 ±  2,080  ops/us
+BalancersBenchmark._6_threads             NonThreadSafeBalancer  thrpt   10   87,855 ±  4,262  ops/us
+BalancersBenchmark._6_threads        SynchronizedMethodBalancer  thrpt   10   30,827 ±  5,208  ops/us
+BalancersBenchmark._6_threads         SynchronizedBlockBalancer  thrpt   10   28,867 ±  5,708  ops/us
+BalancersBenchmark._6_threads        AtomicIntegerCASetBalancer  thrpt   10   10,206 ±  1,472  ops/us
+BalancersBenchmark._6_threads   AtomicIntegerCAExchangeBalancer  thrpt   10   10,383 ±  3,833  ops/us
+BalancersBenchmark._6_threads       AtomicIntegerLambdaBalancer  thrpt   10   10,308 ±  1,217  ops/us
+BalancersBenchmark._6_threads                 SemaphoreBalancer  thrpt   10   33,120 ±  2,363  ops/us
+BalancersBenchmark._8_threads             NonThreadSafeBalancer  thrpt   10   89,774 ±  5,727  ops/us
+BalancersBenchmark._8_threads        SynchronizedMethodBalancer  thrpt   10   30,737 ±  7,529  ops/us
+BalancersBenchmark._8_threads         SynchronizedBlockBalancer  thrpt   10   29,305 ±  7,742  ops/us
+BalancersBenchmark._8_threads        AtomicIntegerCASetBalancer  thrpt   10    9,939 ±  1,615  ops/us
+BalancersBenchmark._8_threads   AtomicIntegerCAExchangeBalancer  thrpt   10   10,658 ±  3,303  ops/us
+BalancersBenchmark._8_threads       AtomicIntegerLambdaBalancer  thrpt   10    9,644 ±  1,395  ops/us
+BalancersBenchmark._8_threads                 SemaphoreBalancer  thrpt   10   34,996 ±  2,064  ops/us
+
+BalancersBenchmark._16_threads         Dummy1Balancer  thrpt   10  2533,212 ± 192,618  ops/us
+BalancersBenchmark._16_threads         Dummy2Balancer  thrpt   10  3062,304 ±  18,301  ops/us
+BalancersBenchmark._1_thread           Dummy1Balancer  thrpt   10   473,010 ±  47,738  ops/us
+BalancersBenchmark._1_thread           Dummy2Balancer  thrpt   10   576,089 ±   5,823  ops/us
+BalancersBenchmark._2_threads          Dummy1Balancer  thrpt   10   893,906 ±  87,828  ops/us
+BalancersBenchmark._2_threads          Dummy2Balancer  thrpt   10  1138,484 ±  31,127  ops/us
+BalancersBenchmark._4_threads          Dummy1Balancer  thrpt   10  1811,518 ± 195,831  ops/us
+BalancersBenchmark._4_threads          Dummy2Balancer  thrpt   10  2232,477 ±  80,407  ops/us
+BalancersBenchmark._6_threads          Dummy1Balancer  thrpt   10  2488,137 ± 259,424  ops/us
+BalancersBenchmark._6_threads          Dummy2Balancer  thrpt   10  3025,848 ±  81,136  ops/us
+BalancersBenchmark._8_threads          Dummy1Balancer  thrpt   10  2481,491 ± 296,155  ops/us
+BalancersBenchmark._8_threads          Dummy2Balancer  thrpt   10  3040,839 ±  40,471  ops/us
