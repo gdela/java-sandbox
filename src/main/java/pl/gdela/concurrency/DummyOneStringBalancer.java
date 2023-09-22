@@ -4,14 +4,14 @@ import java.util.List;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
-class Dummy1Balancer implements Balancer {
+class DummyOneStringBalancer implements Balancer {
 
-    public Dummy1Balancer(List<String> pool) {
+    public DummyOneStringBalancer(List<String> pool) {
         // noop
     }
 
     @Override
     public String getNext() {
-        return "X";
+        return "Hardcoded";
     }
 }

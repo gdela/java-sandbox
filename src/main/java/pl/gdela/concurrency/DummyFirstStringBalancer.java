@@ -4,11 +4,11 @@ import java.util.List;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
-class Dummy2Balancer implements Balancer {
+class DummyFirstStringBalancer implements Balancer {
 
     private final List<String> pool;
 
-    public Dummy2Balancer(List<String> pool) {
+    public DummyFirstStringBalancer(List<String> pool) {
         checkArgument(!pool.isEmpty(), "pool is empty");
         this.pool = List.copyOf(pool);
     }

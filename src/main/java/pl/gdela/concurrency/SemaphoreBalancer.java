@@ -10,7 +10,7 @@ class SemaphoreBalancer implements Balancer {
     private final List<String> pool;
 
     private final Semaphore semaphore = new Semaphore(1);
-    private int next = 0;
+    private int index = 0;
 
     public SemaphoreBalancer(List<String> pool) {
         checkArgument(!pool.isEmpty(), "pool is empty");
@@ -19,14 +19,14 @@ class SemaphoreBalancer implements Balancer {
 
     @Override
     public String getNext() {
-        int idx;
+        int i;
         semaphore.acquireUninterruptibly();
         try {
-            idx = next;
-            next = idx + 1 < pool.size() ? idx + 1 : 0;
+            i = index++;
+            if (index > pool.size()-1) index = 0;
         } finally {
             semaphore.release();
         }
-        return pool.get(idx);
+        return pool.get(i);
     }
 }

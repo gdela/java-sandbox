@@ -4,12 +4,13 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.google.common.base.Preconditions.checkArgument;
+import static pl.gdela.concurrency.BalancerUtils.busySpinWaitOperation;
 
 class AtomicIntegerCAExchangeBalancer implements Balancer {
 
     private final List<String> pool;
 
-    private final AtomicInteger next = new AtomicInteger();
+    private final AtomicInteger index = new AtomicInteger();
 
     public AtomicIntegerCAExchangeBalancer(List<String> pool) {
         checkArgument(!pool.isEmpty(), "pool is empty");
@@ -18,14 +19,14 @@ class AtomicIntegerCAExchangeBalancer implements Balancer {
 
     @Override
     public String getNext() {
-        int readIdx = next.get();
-        int currIdx, nextIdx;
-        do {
-            currIdx = readIdx;
-            nextIdx = currIdx + 1 < pool.size() ? currIdx + 1 : 0;
-            readIdx = next.compareAndExchange(currIdx, nextIdx);
-        } while (readIdx != currIdx);
-
-        return pool.get(currIdx);
+        int readIndex = index.get();
+        for(;;) {
+            int currIndex = readIndex;
+            int nextIndex = currIndex + 1 < pool.size() ? currIndex + 1 : 0;
+            readIndex = index.compareAndExchange(currIndex, nextIndex);
+            if (readIndex == currIndex) break;
+            busySpinWaitOperation();
+        }
+        return pool.get(readIndex);
     }
 }
