@@ -128,24 +128,46 @@ before we do that let's focus on something interesting.
 The biggest surprise in the benchmark results is the slow down of non-thread-safe
 implementation, when going from one thread to two threads. On one thread it was as
 fast as the dummy implementations. One would expect that on two threads the throughput
-will raise, same as it have risen for the dummy implementations, in the end there's no
+will raise, same as it have risen for the dummy implementations. In the end there's no
 critical section in the non-thread-safe implementation. But it's not the case,
 the throughput does not rise, it even does not stay the same, it gets worse!
 
 ![](shared-memory-access/one-vs-many-slowdown.png)
 
 Well, that's something that may be understood if we take a look under the cover, literally
-speaking, i.e. we need to see what sits in the CPU. I think that the drastic slow-down
+speaking. I mean we need to see what sits in my 6-core processor. I think that the drastic slow-down
 when going from 1 thread to 2 threads is caused by the cores having to invalidate the cache
-line with the contented variable in their L1/L2 when another core has written changes
-to the `index` variable in its copy of this cache line. So when it subsequently tries
-to read or write the variable, its L1/L2 caches must ask the other core caches to send
-the new contents of this cache line. See [MESI protocol](https://en.wikipedia.org/wiki/MESI_protocol)
-for a full explanation how this works. This cache-to-cache communication of course takes
-some time, and that's what slows down the 2 or more threads writting/reading to the same
-variable. When there's only one thread, there's no cache-to-cache communication, once core
-get copy of the cache line from main memory, and not much else happens in the system the
-single threaded version always has the `index` variable in the fastest L1/L2 cache.
+line with the contented variable in their L1/L2 caches when another core has written changes
+to the `index` variable in its copy of this cache line.
+
+If I get this right, here is what happens. My machine has 2.8 GHz clock, which means one
+cycle takes 0.36 ns. As measured using JMH the average time that `getNext()` takes when
+executed in single thread is 2.2 ns, for both the dummy and the non-thread-safe implementation.
+In 2.2 ns the clock ticks 6 times. Given that the [microarchitecture](https://en.wikichip.org/wiki/intel/microarchitectures/coffee_lake)
+of my CPU has 14-19 pipeline stages, it means that it's able to go through around 100 machine
+instructions if there are no pipeline stalls. The [assembly printed](https://wiki.openjdk.org/display/HotSpot/PrintAssembly)
+for compiled `getNext()` method is 300-bytes long, and x86 instructions are 1-15 bytes
+long, so it may be that there are around 100 machine instructions. Seems the numbers agree.
+
+With two threads the dummy `getNext()` implementation still takes 2.4 ns, because two cores
+are working in parallel and the dummy implementation does not have a shared `index` variable,
+and it does not do writes to a shared variable. It uses the shared `pool` variable (list of
+strings), but this one is probably cached in L1 or even in CPU registers. So indeed there
+is no reason for a slow down (worse throughput), i.e. no pipeline stalls of cache misses.
+
+On the other hand, the non-thread-safe `getNext()` implementation writes and reads shared
+`index` variable. Let's say that the first core updated this variable and store the change
+to L1/L2 cache. At this point the [MESI cache coherence protocol](https://en.wikipedia.org/wiki/MESI_protocol)
+marks the cache line containing this variable in second core's L1/L2 cache as invalid. When
+second core stores its update of the variable, the store to L1/L2 cache takes longer, because
+the cache has to read the fresh state of the cache line from the first core's L1/L2 cache.
+Eventually this longer store time causes the write buffer to fill up, and the core's
+pipeline to stall. With two threads the `getNext()` takes 16 ns (14 ns more than with
+one thread). This is around the [order of magnitude of L2 latency](https://specbranch.com/posts/common-perf-numbers/),
+which I assume is similar to cross-core L2 read in MESI protocol.
+
+This way I re-discovered the [Single Writer Principle](https://mechanical-sympathy.blogspot.com/2011/09/single-writer-principle.html).
+
 
 ## Speeding up critical section
 
