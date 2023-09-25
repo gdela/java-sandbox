@@ -15,8 +15,8 @@ import org.openjdk.jmh.annotations.Warmup;
 
 import java.util.List;
 
-import static java.util.concurrent.TimeUnit.MICROSECONDS;
-import static org.openjdk.jmh.annotations.Mode.Throughput;
+import static java.util.concurrent.TimeUnit.*;
+import static org.openjdk.jmh.annotations.Mode.*;
 
 @Warmup(iterations = 2, time = 2)
 @Measurement(iterations = 5, time = 2)
@@ -24,8 +24,6 @@ import static org.openjdk.jmh.annotations.Mode.Throughput;
 @BenchmarkMode(Throughput)
 @OutputTimeUnit(MICROSECONDS)
 public class BalancersBenchmark {
-
-    private static final boolean REALISTIC = false;
 
     @State(Scope.Benchmark)
     public static class BalancersFactory {
@@ -35,10 +33,11 @@ public class BalancersBenchmark {
                 "NonThreadSafeBalancer",
                 "SynchronizedMethodBalancer",
                 "SynchronizedBlockBalancer",
+                "SemaphoreBalancer",
+                "ReentrantLockBalancer",
                 "AtomicIntegerCASetBalancer",
                 "AtomicIntegerCAExchangeBalancer",
                 "AtomicIntegerLambdaBalancer",
-                "SemaphoreBalancer",
         })
         public String balancerClass;
 
@@ -53,74 +52,109 @@ public class BalancersBenchmark {
         }
     }
 
+    private enum UseType { NOOP, LENGTH, SUMBYTES, UPPERCASE }
+
+    private static final UseType useType = UseType.NOOP;
+
     /**
      * Simulates how the items returned by balancer will is used.
      */
-    private static String use(String item) {
-        if (REALISTIC) {
-            return item;
-        } else {
-            return item.toUpperCase();
-        }
+    private static Object use(String item) {
+        return switch (useType) {
+            case NOOP -> item;
+            case LENGTH -> item.length();
+            case SUMBYTES -> throw new UnsupportedOperationException("not yet implemented");
+            case UPPERCASE -> item.toUpperCase();
+        };
     }
 
     @Benchmark @Threads(1)
-    public String _01_thread(BalancersFactory factory) throws InterruptedException {
+    public Object _01_thread(BalancersFactory factory) throws InterruptedException {
         return use(factory.balancer.getNext());
     }
 
     @Benchmark @Threads(2)
-    public String _02_threads(BalancersFactory factory) throws InterruptedException {
+    public Object _02_threads(BalancersFactory factory) throws InterruptedException {
         return use(factory.balancer.getNext());
     }
 
     @Benchmark @Threads(3)
-    public String _03_threads(BalancersFactory factory) throws InterruptedException {
+    public Object _03_threads(BalancersFactory factory) throws InterruptedException {
         return use(factory.balancer.getNext());
     }
 
     @Benchmark @Threads(4)
-    public String _04_threads(BalancersFactory factory) throws InterruptedException {
+    public Object _04_threads(BalancersFactory factory) throws InterruptedException {
         return use(factory.balancer.getNext());
     }
 
     @Benchmark @Threads(5)
-    public String _05_threads(BalancersFactory factory) throws InterruptedException {
+    public Object _05_threads(BalancersFactory factory) throws InterruptedException {
         return use(factory.balancer.getNext());
     }
 
     @Benchmark @Threads(6)
-    public String _06_threads(BalancersFactory factory) throws InterruptedException {
+    public Object _06_threads(BalancersFactory factory) throws InterruptedException {
         return use(factory.balancer.getNext());
     }
 
     @Benchmark @Threads(7)
-    public String _07_threads(BalancersFactory factory) throws InterruptedException {
+    public Object _07_threads(BalancersFactory factory) throws InterruptedException {
         return use(factory.balancer.getNext());
     }
 
     @Benchmark @Threads(8)
-    public String _08_threads(BalancersFactory factory) throws InterruptedException {
+    public Object _08_threads(BalancersFactory factory) throws InterruptedException {
         return use(factory.balancer.getNext());
     }
 
     @Benchmark @Threads(9)
-    public String _09_threads(BalancersFactory factory) throws InterruptedException {
+    public Object _09_threads(BalancersFactory factory) throws InterruptedException {
         return use(factory.balancer.getNext());
     }
 
     @Benchmark @Threads(10)
-    public String _10_threads(BalancersFactory factory) throws InterruptedException {
+    public Object _10_threads(BalancersFactory factory) throws InterruptedException {
         return use(factory.balancer.getNext());
     }
 
     @Benchmark @Threads(11)
-    public String _11_threads(BalancersFactory factory) throws InterruptedException {
+    public Object _11_threads(BalancersFactory factory) throws InterruptedException {
         return use(factory.balancer.getNext());
     }
 
     @Benchmark @Threads(12)
-    public String _12_threads(BalancersFactory factory) throws InterruptedException {
+    public Object _12_threads(BalancersFactory factory) throws InterruptedException {
+        return use(factory.balancer.getNext());
+    }
+
+    @Benchmark @Threads(13)
+    public Object _13_threads(BalancersFactory factory) throws InterruptedException {
+        return use(factory.balancer.getNext());
+    }
+
+    @Benchmark @Threads(14)
+    public Object _14_threads(BalancersFactory factory) throws InterruptedException {
+        return use(factory.balancer.getNext());
+    }
+
+    @Benchmark @Threads(15)
+    public Object _15_threads(BalancersFactory factory) throws InterruptedException {
+        return use(factory.balancer.getNext());
+    }
+
+    @Benchmark @Threads(16)
+    public Object _16_threads(BalancersFactory factory) throws InterruptedException {
+        return use(factory.balancer.getNext());
+    }
+
+    @Benchmark @Threads(17)
+    public Object _17_threads(BalancersFactory factory) throws InterruptedException {
+        return use(factory.balancer.getNext());
+    }
+
+    @Benchmark @Threads(18)
+    public Object _18_threads(BalancersFactory factory) throws InterruptedException {
         return use(factory.balancer.getNext());
     }
 }
