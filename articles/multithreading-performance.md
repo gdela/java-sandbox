@@ -104,9 +104,20 @@ in operations per microsecond, so the higher the value the better):
 
 Well, judging by those results indeed using more threads gives more throughput, but only for
 the dummy implementations that do not fulfill the requirements. For them, the throughput
-scales almost linearly with the number of threads. This scaling ends with 6 threads, because
-that's the number of cores in my machine, so up to 6 threads may be executed in parallel. Any
-more threads and they will have to wait for their turn on the CPU. Mind that this is specific
+scales almost linearly with the number of threads. This scaling ends with 6 threads. After
+that, even with more threads, the throughput stays the same. That's because
+there are 6 cores in my machine, so up to 6 threads may be executed in parallel. Any
+more threads and they will have to wait for their turn on the CPU.
+
+This is visible when we instead of throughput we plot the average time it takes a single
+`getNext()` invocation to complete, see below. Here the higher the value the worse, and
+we see latency keeps steady up to around 6 threads, then it increases. For some kind
+of applications it is undesirable to have high latency (even if throughput stays the
+same), so more threads is not always a good thing.
+
+![](multithreading-performance/dummies-average-time.png)
+
+Mind that the above observations are specific
 to [CPU-intensive workloads](https://www.baeldung.com/cs/cpu-io-bound), for IO-intensive
 workloads you may still benefit from using more threads than you have cores, but this is
 out of scope of this article.
@@ -114,7 +125,11 @@ out of scope of this article.
 As expected, the synchronized implementation is slowest, no surprise here. And there's no gain
 by adding more threads - the throughput is the same as on one thread - which is kind of obvious
 as still only one thread at a time can enter the critical sections guarded by `synchronized`
-keyword. Does it mean that that there's no point in using multiple threads (in CPU-bound
+keyword. See zoom-in on the non-dummy implementations (and pay attention to the scale on y-axis):
+
+![](multithreading-performance/non-dummy-throughput-and-average-time.png)
+
+Does it mean that that there's no point in using multiple threads (for CPU-bound
 problems)? Well no, it means that our measurements are wrong. The benchmark is not realistic.
 It continuously gets next string from the balancer, without doing anything useful with it.
 A real application won't behave like that. When it gets next string, it will do something
