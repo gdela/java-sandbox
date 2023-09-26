@@ -172,36 +172,121 @@ This way I re-discovered the [Single Writer Principle](https://mechanical-sympat
 ## Speeding up critical section
 
 Is there something better than `synchronized`, that can get us throughput closer to
-the non-thread-safe implementation. Let's use the goodies from `java.util.concurrent`
-and see if they perform better. TODO: benchmark, `SynchronizedBlock`, `ReentrantLock`,
-`StampedLock`, `Semaphore` and maybe event a self-made lock, for example Dekker's
-or Peterson's algorithm.
+the non-thread-safe implementation? Let's use the goodies from `java.util.concurrent`
+and see if they perform better. Here are the implementations I tested:
+
+```java
+class ReentrantLockBalancer implements Balancer {
+    private final ReentrantLock lock = new ReentrantLock();
+    private int index = 0;
+
+    public String getNext() {
+        int i;
+        lock.lock();
+        try {
+            i = index++;
+            if (index > pool.size()-1) index = 0;
+        } finally {
+            lock.unlock();
+        }
+        return pool.get(i);
+    }
+}
+```
+
+```java
+class SemaphoreBalancer implements Balancer {
+    private final Semaphore semaphore = new Semaphore(1);
+    private int index = 0;
+
+    public String getNext() {
+        int i;
+        semaphore.acquireUninterruptibly();
+        try {
+            i = index++;
+            if (index > pool.size()-1) index = 0;
+        } finally {
+            semaphore.release();
+        }
+        return pool.get(i);
+    }
+}
+```
+
+Results of the benchmark and comparison with non-thread-safe implementation:
 
 ![](shared-memory-access/thread-safe-lock-based.png)
+
+None of the `synchronized` alternatives perform better. Seems that the overhead of guarding
+access to critical section is negligible to the time it takes to perform the work in
+he critical section itself (even though there's not much happening there). In all those
+implementations the critical section is executed by one core at a time, and this dominates
+the throughput results.
+
+*TODO:*
+
+- *explore what makes those implementations slower than non-thread-safe, e.g. memory barriers, context switching* 
+- *especially in one thread case, biased locking would help (only for `synchronized` or for all?), but why it's slow without that*
+- *show flamegraphs from async-profiler comparing those implementations*
+- *add implementation with `StampedLock` to the benchmark*
+- *try implementation with self-made lock, for example Dekker's*
+  *or Peterson's algorithm*
 
 ## Getting rid of critical section
 
 Maybe we can get rid of critical section completely? Instead, optimistically assume that
 no other thread is currently updating the `index` shared variable, do our own update,
-and commit it only if our assumption held true. TODO: benchmark CAS-based balancers,
-e.g. using `AtomicLong`'s methods.
+and commit it only if our assumption held true. This can be done using compare-and-swap
+operation. Here are the implementations I tested:
+
+```java
+class AtomicIntegerCASetBalancer implements Balancer {
+    private final AtomicInteger index = new AtomicInteger();
+
+    public String getNext() {
+        int readIndex;
+        for(;;) {
+            readIndex = index.get();
+            int nextIndex = readIndex + 1 < pool.size() ? readIndex + 1 : 0;
+            if (index.compareAndSet(readIndex, nextIndex)) break;
+            busySpinWaitOperation();
+        }
+        return pool.get(readIndex);
+    }
+}
+```
+
+```java
+class AtomicIntegerLambdaBalancer implements Balancer {
+    private final AtomicInteger index = new AtomicInteger();
+
+    public String getNext() {
+        int i = index.getAndUpdate(currIndex -> currIndex + 1 < pool.size() ? currIndex + 1 : 0);
+        return pool.get(i);
+    }
+}
+```
+
+Results of the benchmark and comparison with non-thread-safe implementation:
 
 ![](shared-memory-access/thread-safe-cas-based.png)
+
+Those implementations perform even worse than the lock-based ones. Let's explore this.
 
 Plain old synchronization better than non-blocking algorithm?
 -------------------------------------------------------------
 
-Except the case of single thread, the `synchronized` and `Semaphore` implementations seem to perform
+Except the case of single thread, the lock-based implementations seem to perform
 better than the implementations based on atomic compare-and-set operation. Which is a bummer, as
-I thought that the whole purpose of using those lower-level mechanism in Java is performance. Most
-probably I did something wrong in the implementation which caused it to be slow. That's the very
-next thing that I plan to explore.
+I thought that the whole purpose of using those lower-level mechanism in Java is performance.
 
-Theory that can explain this: Due to unrealistic use-case (see later in the article),
+![](shared-memory-access/lock-based-vs-cas-based.png)
+
+My current theory that can explain this: Due to unrealistic use-case (see later in the article),
 the usage of balancer's `getNext()` is contented unusually high. This causes the busy
 loop with CAS operations to be executed many times before it finally succeeds, and during
-this time it occupies a core and uses CPU cycles. On the other hand the `synchronized`
-and `Semaphore` implementations when contented to park the thread, allowing the core
+this time it occupies a core and uses CPU cycles. On the other hand the lock-based
+implementations when contented, they do park the thread, allowing the core
 to execute other threads without wasting CPU cycles while waiting.
 
 Of course the benchmarked use case is far from being realistic. In real application the
@@ -215,10 +300,17 @@ implementations of `getNext()` do is basically serial, i.e. only one thread at a
 may write the value of the variable that is pointing to the next resource/string to
 be returned.
 
+*TODO:*
+
+- *confirm my theory why CAS-based implementations are slower than lock-based*
+- *explore how the locks are implemented under the hood, how to the park to release the core*
+- *do some parking/waiting in busy loop failure, e.g. `Thread.onSpinWait()`, `LockSupport.parkNanos()`*
+- *what bad this parking does to the application, higher and unpredictable latency?*
+
 Keep It Simple, Stupid!
 -----------------------
 
-Going back to the business requirement, it's work asking how uniform the distribution of usage
+Going back to the business requirement, it's worth asking how uniform the distribution of usage
 of the resources must be. All the implementations that use some form of synchronization or
 coordination make sure that each resource is used no more than one less or one more than any
 other resource. But maybe it's enough if the usage differs no more than 1%. It would mean that
@@ -226,19 +318,23 @@ for 40000 usages of 4 resources, the difference should be no more than 100. And 
 and fastest `NonThreadSafeBalancer` implementation satisfies this requirement:
 
 ```
-got {A=9933, B=10067, C=10125, D=9875} from NonThreadSafeBalancer
-got {A=10000, B=10000, C=10000, D=10000} from Synchronized*Balancer
-got {A=10000, B=10000, C=10000, D=10000} from AtomicInteger*Balancer
-got {A=10000, B=10000, C=10000, D=10000} from SemaphoreBalancer
+got {A=12075, B=11962, C=12115, D=11848} from NonThreadSafeBalancer
+got {A=12000, B=12000, C=12000, D=12000} from SynchronizedMethodBalancer
+got {A=12000, B=12000, C=12000, D=12000} from SynchronizedBlockBalancer
+got {A=12000, B=12000, C=12000, D=12000} from ReentrantLockBalancer
+got {A=12000, B=12000, C=12000, D=12000} from SemaphoreBalancer
+got {A=12000, B=12000, C=12000, D=12000} from AtomicIntegerCASetBalancer
+got {A=12000, B=12000, C=12000, D=12000} from AtomicIntegerLambdaBalancer
+got {A=12000, B=12000, C=12000, D=12000} from AtomicIntegerCAExchangeBalancer
 ```
 
 The problem may be that it tends to use the same resource at about the same time if data race
-happens. Then two threads use the same value of the `next` variable which points to the resource
+happens. Then two threads use the same value of the `index` variable which points to the resource
 to be used next. I'll try another implementation that just randomly selects a resource. Over
 a longer period of time the usage should be balanced, but it must be checked if this gives
 a wider gap between subsequent usages of the same resource than the `NonThreadSafeBalancer`.
 
-Last but not least. If the necessity to have a balancer was indeed to balance request to a set
+Last but not least. If the necessity to have a balancer was indeed to balance requests to a set
 of URLs, then the whole exercise to make the balancer as fast as possible simply is not worth
 it. Compared to the time it takes to do an HTTP request-response round trip, the time it takes
 to select the URL is negligible. A simple `synchronized` keyword will be sufficient and fast
@@ -259,12 +355,12 @@ in what part of method is synchronized. In the later the part is smaller:
 ```java
 class SynchronizedMethodBalancer implements Balancer {
     private final List<String> pool;
-    private int next = 0;
+    private int index = 0;
 
     public synchronized String getNext() {
-        int idx = next;
-        next = idx + 1 < pool.size() ? idx + 1 : 0;
-        return pool.get(idx);
+        String item = pool.get(index++);
+        if (index > pool.size()-1) index = 0;
+        return item;
     }
 }
 ```
@@ -272,15 +368,15 @@ class SynchronizedMethodBalancer implements Balancer {
 ```java
 class SynchronizedBlockBalancer implements Balancer {
     private final List<String> pool;
-    private int next = 0;
+    private int index = 0;
 
     public String getNext() {
-        int idx;
+        int i;
         synchronized (this) {
-            idx = next;
-            next = idx + 1 < pool.size() ? idx + 1 : 0;
+            i = index++;
+            if (index > pool.size()-1) index = 0;
         }
-        return pool.get(idx);
+        return pool.get(i);
     }
 }
 ```
@@ -301,13 +397,14 @@ class AtomicIntegerBalancer implements Balancer {
     private AtomicInteger index = new AtomicInteger();
 
     public String getNext() {
-        int currIndex, nextIndex;
-        do {
-            currIndex = index.get(); // get in each loop iteration
-            nextIndex = currIndex + 1 < pool.size() ? currIndex + 1 : 0;
-        } while (!index.compareAndSet(currIndex, nextIndex));
-
-        return pool.get(currIndex);
+        int readIndex;
+        for(;;) {
+            readIndex = index.get();
+            int nextIndex = readIndex + 1 < pool.size() ? readIndex + 1 : 0;
+            if (index.compareAndSet(readIndex, nextIndex)) break;
+            busySpinWaitOperation();
+        }
+        return pool.get(readIndex);
     }
 }
 ```
@@ -318,15 +415,15 @@ class AtomicIntegerExchangeBalancer implements Balancer {
     private AtomicInteger index = new AtomicInteger();
 
     public String getNext() {
-        int readIndex = index.get(); // get only once
-        int currIndex, nextIndex;
-        do {
-            currIndex = readIndex;
-            nextIndex = currIndex + 1 < pool.size() ? currIndex + 1 : 0;
-            readIndex = index.compareAndExchange(currIndex, nextIndex); // then use the value that we have for 'free' from exchange 
-        } while (readIndex != currIndex);
-
-        return pool.get(currIndex);
+        int readIndex = index.get(); // the get() is outside of loop, so executed only once
+        for(;;) {
+            int currIndex = readIndex;
+            int nextIndex = currIndex + 1 < pool.size() ? currIndex + 1 : 0;
+            readIndex = index.compareAndExchange(currIndex, nextIndex);
+            if (readIndex == currIndex) break;
+            busySpinWaitOperation();
+        }
+        return pool.get(readIndex);
     }
 }
 ```
@@ -338,23 +435,10 @@ never trust your intuitions about performance - always do test.
 TODO
 ----
 
-- Do microbenchmark on Linux and on a different architecture (e.g. ARM), which does more reorderings.
-- Analyse bytecode and compiled native code of each balancer implementation.
-- Analyse flamegraphs from microbenchmarks executed with async-profiler.
-- Compare results with _Latency Numbers Every Programmer Should Know_. Is the time a single `getNext()`
-  takes in the same order of magnitude as the latency of the operations that it does under the hood?
-- Do microbenchmarks with resources/strings array bigger than L1, L2, L3 caches.
-- Do microbenchmark when there is some background noise, i.e. other threads that do other things
-  (CPU-heavy and Memory-heavy), as this will be more realistic. An application won't solely get
-  resources from the balancer without doing anything else.
-
-TODO: try to explain what happens with throughput when number of threads goes from
-2, to 4, to 6, leveraging more and more cores, and beyond 6 when there's more threads
-than cores, in the balancer grouped by type of synchronization (none, lock-based,
-CAS-based).
-
-![](shared-memory-access/line-plot-non-safe-skip-1.png "Non-Thread-Safe Balancer")
-
-![](shared-memory-access/line-plot-lock-skip-1.png "Lock-Based Balancers")
-
-![](shared-memory-access/line-plot-cas-skip-1.png "CAS-Based Balancers")
+- *Do microbenchmark on Linux and on a different architecture (e.g. ARM), which does more reorderings.*
+- *Analyse bytecode and compiled native code of each balancer implementation.*
+- *Analyse flamegraphs from microbenchmarks executed with async-profiler.*
+- *Do microbenchmarks with resources/strings array bigger than L1, L2, L3 caches.*
+- *Do microbenchmark when there is some background noise, i.e. other threads that do other things*
+  *(CPU-heavy and Memory-heavy), as this will be more realistic. An application won't solely get*
+  *resources from the balancer without doing anything else.*

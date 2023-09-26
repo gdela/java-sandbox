@@ -47,7 +47,7 @@ abstract class BalancerTest {
         List<String> pool = List.of("A", "B", "C", "D");
         var balancer = provideBalancer(pool);
         int numOfIterations = 1000;
-        int numOfParallelTasks = getRuntime().availableProcessors();
+        int numOfParallelTasks = 2 * getRuntime().availableProcessors();
 
         // when
         var histogram = new TreeMap<String, LongAdder>();

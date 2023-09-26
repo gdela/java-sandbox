@@ -52,19 +52,19 @@ public class BalancersBenchmark {
         }
     }
 
-    private enum UseType { NOOP, LENGTH, SUMBYTES, UPPERCASE }
+    private enum UseType {DONOOP, GETLENGTH, SUMBYTES, TOUPPER}
 
-    private static final UseType useType = UseType.NOOP;
+    private static final UseType useType = UseType.DONOOP;
 
     /**
      * Simulates how the items returned by balancer will is used.
      */
     private static Object use(String item) {
         return switch (useType) {
-            case NOOP -> item;
-            case LENGTH -> item.length();
+            case DONOOP -> item;
+            case GETLENGTH -> item.length();
             case SUMBYTES -> throw new UnsupportedOperationException("not yet implemented");
-            case UPPERCASE -> item.toUpperCase();
+            case TOUPPER -> item.toUpperCase();
         };
     }
 
