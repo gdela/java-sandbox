@@ -80,9 +80,9 @@ java.math.BigDecimal@6df97b55d footprint:
          3                 104   (total)
 ```
 
-In the inflated form the `BigDecimal` object has reference to a `BigInteger` object,
+In the inflated form the `BigDecimal` object has reference to a `BigInteger` object,
 and the `BigInteger` object (40 bytes) has reference to array of integers that constitute
-the unscaled value. This is the `[I` object (24 bytes).
+the unscaled value. This is the `[I` object (24 bytes).
 
 ## Avoid BigDecimal inflation
 
