@@ -44,7 +44,7 @@ assertEquals(before, after); // this is true
 out.println("object size after: " + GraphLayout.parseInstance(after).totalSize());
 ```
 
-Even though the `BigDecimal`s before and after and completely equal, the `before`
+Even though the `BigDecimal`s before and after are completely equal, the `before`
 object is **40 bytes** in size, whereas the `after` object is **104 bytes** in size.
 That's two and a half times more! There's no reason for the deserialization framework
 to create a bigger object, when equally good will be a smaller object. Granted that

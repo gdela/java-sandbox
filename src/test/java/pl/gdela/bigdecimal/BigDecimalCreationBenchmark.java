@@ -26,6 +26,9 @@ import static org.openjdk.jmh.annotations.Mode.AverageTime;
 @OutputTimeUnit(NANOSECONDS)
 public class BigDecimalCreationBenchmark {
 
+	/**
+	 * Small decimals which unscaled value fits in a long.
+	 */
 	@State(Scope.Benchmark)
 	public static class ParamsSmall {
 		@Param({"0", "1", "123456789", "9223372036854775807"}) // the last one is Long.MAX_VALUE
@@ -45,6 +48,9 @@ public class BigDecimalCreationBenchmark {
 		}
 	}
 
+	/**
+	 * Bigger decimals which unscaled value is greater than a long.
+	 */
 	@State(Scope.Benchmark)
 	public static class ParamsBigger {
 		public BigInteger unscaledBigValue;
@@ -89,18 +95,18 @@ public class BigDecimalCreationBenchmark {
 	}
 
 	@Benchmark
-	public static BigDecimal BIGGER_ctor_having_big_integer(ParamsBigger params) throws InterruptedException {
+	public static BigDecimal ctor_having_big_integer_bigger(ParamsBigger params) throws InterruptedException {
 		return new BigDecimal(params.unscaledBigValue, params.scale);
 	}
 
 	@Benchmark
-	public static BigDecimal BIGGER_ctor_creating_big_integer_from_bytes(ParamsBigger params) throws InterruptedException {
+	public static BigDecimal ctor_creating_big_integer_from_bytes_bigger(ParamsBigger params) throws InterruptedException {
 		BigInteger unscaledValue = new BigInteger(params.unscaledBytesValue);
 		return new BigDecimal(unscaledValue, params.scale);
 	}
 
 	@Benchmark
-	public static BigDecimal BIGGER_ctor_having_string(ParamsBigger params) throws InterruptedException {
+	public static BigDecimal ctor_having_string_bigger(ParamsBigger params) throws InterruptedException {
 		return new BigDecimal(params.valueString);
 	}
 }
