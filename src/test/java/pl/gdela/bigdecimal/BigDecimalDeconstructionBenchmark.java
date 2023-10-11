@@ -11,8 +11,8 @@ import static java.math.BigDecimal.ZERO;
 import static java.util.concurrent.TimeUnit.MICROSECONDS;
 import static org.openjdk.jmh.annotations.Mode.SingleShotTime;
 
-@Warmup(iterations = 20, time = 2)
-@Measurement(iterations = 80, time = 2)
+@Warmup(iterations = 50, time = 2)
+@Measurement(iterations = 200, time = 2)
 @Fork(1)
 @BenchmarkMode(SingleShotTime)
 @OutputTimeUnit(MICROSECONDS)
@@ -22,8 +22,8 @@ public class BigDecimalDeconstructionBenchmark {
     public static class MyState {
         @Param({
                 "zero", "one", "0",
-                "2", "10", "max_in_long", "20", // twenty is more than the number of digits in Long.MAX_VALUE
-                "-2", "-10", "min_in_long", "-20" // twenty is more than the number of digits in Long.MIN_VALUE
+                "2", "5", "10", "15", "max_in_long", "20", "25", // twenty is more than the number of digits in Long.MAX_VALUE
+                "-2", "-5", "-10", "-15", "min_in_long", "-20", "-25" // twenty is more than the number of digits in Long.MIN_VALUE
         })
         String numOfDigits = "5";
         int scale = 2;

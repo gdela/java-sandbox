@@ -119,6 +119,12 @@ Though then the fastest way to get the unscaled value as `long` without inflicti
 long unscaledValue = decimal.scaleByPowerOfTen(decimal.scale()).longValue();
 ```
 
+To help deciding if it's worth complicating serialization code this way to avoid `BigInteger`
+creation to get the unscaled value, here's comparison of average times to get the unscaled
+long value in this way vs. times to get it from `BigInteger`:
+
+![](bigdecimal-performance/get-unscaled-using-vs-avoiding-big-integer.png)
+
 We could do it more easily with accessing `BigDecimal`'s private field `intCompact`,
 for example using a `VarHandle`. If it is different than `Long.MIN_VALUE` then it
 means that the value of `intCompact` is the unscaled value, and `BigInteger` is not
@@ -203,6 +209,12 @@ ctor_having_string                    9223372036854775817  avgt    3  119,263 ±
 The next to last group of results is for the unscaled value equal to `Long.MAX_VALUE`,
 and the last group of result is for `Long.MAX_VALUE + 10`, that's why not all method
 of creation were possible for this unscaled value.
+
+## Real world examples how to avoid inflation
+
+Here's a pull request to the Kryo library which does what is recommended in this article:
+
+- https://github.com/EsotericSoftware/kryo/pull/1014
 
 ## Printing `BigDecimal` makes it bigger
 
