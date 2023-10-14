@@ -212,9 +212,11 @@ of creation were possible for this unscaled value.
 
 ## Real world examples how to avoid inflation
 
-Here's a pull request to the Kryo library which does what is recommended in this article:
+Here's are pull requests to the Kryo library which does what is recommended in this article:
 
-- https://github.com/EsotericSoftware/kryo/pull/1014
+- [#1014](https://github.com/EsotericSoftware/kryo/pull/1014),
+  [#1015](https://github.com/EsotericSoftware/kryo/pull/1015),
+  [#1016](https://github.com/EsotericSoftware/kryo/pull/1016)
 
 ## Printing `BigDecimal` makes it bigger
 
