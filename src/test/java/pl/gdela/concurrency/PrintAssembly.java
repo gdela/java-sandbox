@@ -9,7 +9,7 @@ class PrintAssembly {
     public static void main(String[] args) {
         Balancer balancer = new NonThreadSafeBalancer(List.of("A", "B", "C", "D"));
         long sum = 0;
-        for (int j = 0; j < 10; j++) {
+        for (int j = 0; j < 20; j++) {
             long loops = 10_000_000;
             long start = nanoTime();
             for (int i = 0; i < loops; i++) {
