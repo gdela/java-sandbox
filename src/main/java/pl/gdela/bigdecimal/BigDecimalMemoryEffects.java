@@ -6,7 +6,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import static java.lang.System.out;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BigDecimalMemoryEffects {
 
@@ -24,7 +23,7 @@ class BigDecimalMemoryEffects {
         int scale = before.scale();
         // recreate object
         var after = new BigDecimal(new BigInteger(unscaledValue), scale);
-        assertEquals(before, after); // this is true
+        if (!after.equals(before)) throw new RuntimeException("after should be equal to before");
         out.println("object size after: " + GraphLayout.parseInstance(after).totalSize());
         out.println("object footprint after:\n" + GraphLayout.parseInstance(after).toFootprint());
     }
