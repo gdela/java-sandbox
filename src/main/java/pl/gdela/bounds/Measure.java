@@ -33,7 +33,7 @@ public class Measure {
     private Histogram histogram;
 
     public static void main(String[] args) throws Throwable {
-        out.printf("# Method main() entered at %d ms%n", runtimeBean.getUptime());
+        out.printf("method main() entered at %d ms%n", runtimeBean.getUptime());
         Measure main = new Measure();
         JCommander.newBuilder().addObject(main).build().parse(args);
         main.run();
@@ -48,16 +48,16 @@ public class Measure {
 
         if (useHistogram) histogram = new Histogram(1000, 1_000_000_000L, 3);
 
+        out.printf("executions started at %d ms%n", runtimeBean.getUptime());
         if (doWarmup) {
             execute(method, iterations / 2, "1st-warmup");
-            out.printf("# Warmup 1 finished at %d ms%n", runtimeBean.getUptime());
+            out.printf("warmup 1 finished at %d ms%n", runtimeBean.getUptime());
 
             execute(method, iterations / 2, "2nd-warmup");
-            out.printf("# Warmup 2 finished at %d ms%n", runtimeBean.getUptime());
+            out.printf("warmup 2 finished at %d ms%n", runtimeBean.getUptime());
         }
-
         execute(method, iterations, "main");
-        out.printf("# Measurement finished at %d ms%n", runtimeBean.getUptime());
+        out.printf("measurement finished at %d ms%n", runtimeBean.getUptime());
     }
 
     private void execute(MethodHandle method, long iterations, String name) throws Throwable {
@@ -72,27 +72,34 @@ public class Measure {
             if (useHistogram) histogram.recordValue(sampleFinishTime - sampleStartTime);
         }
         long finishTime = nanoTime();
+        out.printf("dummy result is %s%n", result);
 
-        out.printf("# Dummy result is %s%n", result);
-
-        out.printf("# Execution of %d iterations took %.1f ms (%.3f ms per iteration)%n",
+        out.printf("%d executions took %.1f ms (%.3f ms per execution)%n",
                 iterations,
                 (finishTime-startTime) / 1000.0 / 1000.0,
                 (finishTime-startTime) / 1000.0 / 1000.0 / iterations
         );
 
         if (useHistogram) {
-            double scalingRatio = 1_000_000.0;
             String fileName = "histogram-" + name + ".log";
+            double scalingRatio = 1_000_000.0;
             try (PrintStream log = new PrintStream(fileName)) {
                 histogram.outputPercentileDistribution(log, scalingRatio);
             }
-            out.printf("# Min %.3f, Mean %.3f, Max %.3f, StdDev %.3f, %s%n",
+            out.printf("mean %.3f ms, std dev %.3f ms, %s%n",
+                    histogram.getMean() / scalingRatio,
+                    histogram.getStdDeviation() / scalingRatio,
+                    fileName
+            );
+            out.printf("min %.3f ms, med %.3f ms, max %.3f ms%n",
                 histogram.getMinValue() / scalingRatio,
-                histogram.getMean() / scalingRatio,
-                histogram.getMaxValue() / scalingRatio,
-                histogram.getStdDeviation() / scalingRatio,
-                fileName
+                histogram.getValueAtPercentile(0.5) / scalingRatio,
+                histogram.getMaxValue() / scalingRatio
+            );
+            long minPlusSomeDelta = (long) (histogram.getMinValue() * 1.05);
+            out.printf("%d samples greater than %.3f ms%n",
+                    histogram.getCountBetweenValues(minPlusSomeDelta, histogram.getMaxValue()),
+                    minPlusSomeDelta / scalingRatio
             );
         }
 

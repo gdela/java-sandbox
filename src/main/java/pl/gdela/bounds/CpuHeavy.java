@@ -5,6 +5,10 @@ public class CpuHeavy {
     private static final long SUM_FROM = 0;
     public static final long SUM_TO = 1_000_000;
 
+    static long sum() {
+        return sum_with_one_var();
+    }
+
     static long sum_with_one_var() {
         long sum = 0;
         for (long i = SUM_FROM; i < SUM_TO; i++) {
