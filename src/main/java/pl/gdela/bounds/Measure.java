@@ -97,9 +97,10 @@ public class Measure {
                 histogram.getMaxValue() / scalingRatio
             );
             long minPlusSomeDelta = (long) (histogram.getMinValue() * 1.05);
-            out.printf("%d samples greater than %.3f ms%n",
+            out.printf("%d samples greater than %.3f ms (%.3f percentile)%n",
                     histogram.getCountBetweenValues(minPlusSomeDelta, histogram.getMaxValue()),
-                    minPlusSomeDelta / scalingRatio
+                    minPlusSomeDelta / scalingRatio,
+                    100 - histogram.getPercentileAtOrBelowValue(minPlusSomeDelta)
             );
         }
 

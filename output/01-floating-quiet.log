@@ -1,0 +1,33 @@
+Events disabled
+method main() entered at 56 ms
+executions started at 95 ms
+Events enabled
+dummy result is 19999980000000000
+40000 executions took 9621.3 ms (0.241 ms per execution)
+mean 0.241 ms, std dev 0.014 ms, histogram-main.log
+min 0.239 ms, med 0.239 ms, max 2.793 ms
+1877 samples greater than 0.251 ms (4.510 percentile)
+measurement finished at 9741 ms
+
+ Performance counter stats for 'java -cp target/dependency/*:target/classes/:target/test-classes/ pl.gdela.bounds.Measure CpuHeavy.sum -i 40000 -h':
+
+          9 696,83 msec task-clock                       #    1,005 CPUs utilized             
+               487      context-switches                 #   50,223 /sec                      
+                22      cpu-migrations                   #    2,269 /sec                      
+               392      page-faults                      #   40,426 /sec                      
+    40 337 041 741      cycles                           #    4,160 GHz                       
+    55 481 860 785      instructions                     #    1,38  insn per cycle            
+     2 589 998 204      branches                         #  267,097 M/sec                     
+         5 793 163      branch-misses                    #    0,22% of all branches           
+   201 547 725 175      slots                            #   20,785 G/sec                     
+    52 056 967 040      topdown-retiring                 #     22,8% Retiring                 
+    30 177 311 141      topdown-bad-spec                 #     13,2% Bad Speculation          
+     3 527 200 681      topdown-fe-bound                 #      1,5% Frontend Bound           
+   142 103 169 103      topdown-be-bound                 #     62,4% Backend Bound            
+
+       9,647587742 seconds time elapsed
+
+       9,838088000 seconds user
+       0,032019000 seconds sys
+
+
