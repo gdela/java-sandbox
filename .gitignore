@@ -2,3 +2,5 @@
 /target/
 /.idea/jarRepositories.xml
 /analysis/.ipynb_checkpoints/
+/*.log
+.uuid
