@@ -1,0 +1,34 @@
+cset: --> last message, executed args into cpuset "/user", new pid is: 409121
+Events disabled
+method main() entered at 58 ms
+Events enabled
+executions started at 112 ms
+dummy result is 19999980000000000
+40000 executions took 10572.9 ms (0.264 ms per execution)
+mean 0.264 ms, std dev 0.039 ms, histogram-main.log
+min 0.264 ms, med 0.264 ms, max 7.995 ms
+33 samples greater than 0.277 ms (0.082 percentile)
+measurement finished at 10732 ms
+
+ Performance counter stats for 'java -cp target/dependency/*:target/classes/:target/test-classes/ pl.gdela.bounds.Measure CpuHeavy.sum -i 40000 -h':
+
+         10 710,88 msec task-clock                       #    1,007 CPUs utilized             
+               655      context-switches                 #   61,153 /sec                      
+                46      cpu-migrations                   #    4,295 /sec                      
+               975      page-faults                      #   91,029 /sec                      
+    40 602 440 527      cycles                           #    3,791 GHz                       
+    55 632 416 241      instructions                     #    1,37  insn per cycle            
+     2 620 362 180      branches                         #  244,645 M/sec                     
+         7 210 993      branch-misses                    #    0,28% of all branches           
+   201 376 797 445      slots                            #   18,801 G/sec                     
+    51 774 076 969      topdown-retiring                 #     24,9% Retiring                 
+    11 423 027 208      topdown-bad-spec                 #      5,5% Bad Speculation          
+     3 517 748 777      topdown-fe-bound                 #      1,7% Frontend Bound           
+   141 513 802 295      topdown-be-bound                 #     68,0% Backend Bound            
+
+      10,636602874 seconds time elapsed
+
+      10,846646000 seconds user
+       0,035982000 seconds sys
+
+
