@@ -1,9 +1,14 @@
 #!/bin/zsh
-set -u
+
+function turbooff() {
+  echo 1 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo
+}
+
+function turboon() {
+  echo 0 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo
+}
 
 function shield() {
-  # echo "1" | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo
-  echo 0 | sudo tee /proc/sys/kernel/nmi_watchdog
   sudo cset shield -c $1 -k on
   sudo cset shield
   for i in $(echo $1 | tr "," "\n"); do
@@ -26,7 +31,9 @@ function unshield() {
   done
 }
 
+set -u
 unsetopt bgnice
+echo 0 | sudo tee /proc/sys/kernel/nmi_watchdog
 
 export CP="-cp target/dependency/*:target/classes/:target/test-classes/"
 
