@@ -1,0 +1,72 @@
+cset: --> last message, executed args into cpuset "/user", new pid is: 174823
+have 2 processors
+method main() entered at 474 ms
+executions started at 541 ms
+dummy result is 19999980000000000
+40000 executions took 16744.0 ms (0.419 ms per execution, 10.609 ms maximum)
+mean 0.418 ms, std dev 0.052 ms, histogram-1-warmup.log
+min 0.417 ms, med 0.418 ms, max 10.617 ms
+15 samples greater than 0.438 ms (0.037 percentile)
+0.41 ms: 36867
+0.42 ms: 3094
+0.43 ms: 25
+0.44 ms: 4
+0.45 ms: 3
+0.52 ms: 1
+0.53 ms: 1
+0.93 ms: 1
+0.95 ms: 1
+0.98 ms: 1
+1.6 ms: 1
+>=10 ms: 1
+warmup 1 finished at 17354 ms
+dummy result is 19999980000000000
+40000 executions took 16726.4 ms (0.418 ms per execution, 0.541 ms maximum)
+mean 0.418 ms, std dev 0.001 ms, histogram-2-warmup.log
+min 0.417 ms, med 0.418 ms, max 0.541 ms
+7 samples greater than 0.438 ms (0.017 percentile)
+0.41 ms: 36943
+0.42 ms: 3026
+0.43 ms: 24
+0.44 ms: 3
+0.45 ms: 3
+0.54 ms: 1
+warmup 2 finished at 34103 ms
+dummy result is 19999980000000000
+40000 executions took 16725.8 ms (0.418 ms per execution, 0.532 ms maximum)
+mean 0.418 ms, std dev 0.002 ms, histogram-3-warmup.log
+min 0.417 ms, med 0.418 ms, max 0.532 ms
+49 samples greater than 0.438 ms (0.112 percentile)
+0.41 ms: 36682
+0.42 ms: 3163
+0.43 ms: 117
+0.44 ms: 24
+0.45 ms: 8
+0.46 ms: 5
+0.53 ms: 1
+warmup 3 finished at 50849 ms
+dummy result is 19999980000000000
+40000 executions took 16720.3 ms (0.418 ms per execution, 0.512 ms maximum)
+mean 0.418 ms, std dev 0.001 ms, histogram-4-warmup.log
+min 0.417 ms, med 0.418 ms, max 0.513 ms
+3 samples greater than 0.438 ms (0.007 percentile)
+0.41 ms: 37116
+0.42 ms: 2870
+0.43 ms: 12
+0.50 ms: 1
+0.51 ms: 1
+warmup 4 finished at 67586 ms
+sleep after warmups finished at 72587 ms
+dummy result is 19999980000000000
+40000 executions took 16720.5 ms (0.418 ms per execution, 0.488 ms maximum)
+mean 0.418 ms, std dev 0.001 ms, histogram-main.log
+min 0.417 ms, med 0.418 ms, max 0.488 ms
+12 samples greater than 0.438 ms (0.030 percentile)
+0.41 ms: 37107
+0.42 ms: 2849
+0.43 ms: 34
+0.44 ms: 5
+0.45 ms: 2
+0.46 ms: 2
+0.48 ms: 1
+measurement finished at 89324 ms
