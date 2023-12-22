@@ -1,0 +1,177 @@
+# started on Wed Dec  6 09:29:56 2023
+
+
+ Performance counter stats for process id '469784':
+
+            java-469784                0,11 msec task-clock                       #    0,000 CPUs utilized             
+            java-469785           16 871,18 msec task-clock                       #    0,991 CPUs utilized             
+ VM Periodic Tas-469786                0,17 msec task-clock                       #    0,000 CPUs utilized             
+       VM Thread-469787                0,31 msec task-clock                       #    0,000 CPUs utilized             
+ Reference Handl-469788                0,02 msec task-clock                       #    0,000 CPUs utilized             
+       Finalizer-469789                0,03 msec task-clock                       #    0,000 CPUs utilized             
+ Signal Dispatch-469790                0,12 msec task-clock                       #    0,000 CPUs utilized             
+  Service Thread-469791                0,07 msec task-clock                       #    0,000 CPUs utilized             
+ Monitor Deflati-469792                0,61 msec task-clock                       #    0,000 CPUs utilized             
+ C2 CompilerThre-469793               61,87 msec task-clock                       #    0,004 CPUs utilized             
+ C1 CompilerThre-469794              126,17 msec task-clock                       #    0,007 CPUs utilized             
+ Notification Th-469795                0,01 msec task-clock                       #    0,000 CPUs utilized             
+  Common-Cleaner-469796                0,01 msec task-clock                       #    0,000 CPUs utilized             
+            java-469784                   0      context-switches                 #    0,000 /sec                      
+            java-469785                 103      context-switches                 #    6,105 /sec                      
+ VM Periodic Tas-469786                   3      context-switches                 #   17,631 K/sec                     
+       VM Thread-469787                  18      context-switches                 #   58,152 K/sec                     
+ Reference Handl-469788                   0      context-switches                 #    0,000 /sec                      
+       Finalizer-469789                   0      context-switches                 #    0,000 /sec                      
+ Signal Dispatch-469790                   1      context-switches                 #    8,368 K/sec                     
+  Service Thread-469791                   3      context-switches                 #   44,546 K/sec                     
+ Monitor Deflati-469792                  67      context-switches                 #  109,385 K/sec                     
+ C2 CompilerThre-469793                 114      context-switches                 #    1,843 K/sec                     
+ C1 CompilerThre-469794                 118      context-switches                 #  935,226 /sec                      
+ Notification Th-469795                   0      context-switches                 #    0,000 /sec                      
+  Common-Cleaner-469796                   0      context-switches                 #    0,000 /sec                      
+            java-469784                   1      cpu-migrations                   #    8,930 K/sec                     
+            java-469785                   9      cpu-migrations                   #    0,533 /sec                      
+ VM Periodic Tas-469786                   2      cpu-migrations                   #   11,754 K/sec                     
+       VM Thread-469787                   5      cpu-migrations                   #   16,153 K/sec                     
+ Reference Handl-469788                   0      cpu-migrations                   #    0,000 /sec                      
+       Finalizer-469789                   1      cpu-migrations                   #   31,842 K/sec                     
+ Signal Dispatch-469790                   0      cpu-migrations                   #    0,000 /sec                      
+  Service Thread-469791                   2      cpu-migrations                   #   29,697 K/sec                     
+ Monitor Deflati-469792                   8      cpu-migrations                   #   13,061 K/sec                     
+ C2 CompilerThre-469793                   8      cpu-migrations                   #  129,308 /sec                      
+ C1 CompilerThre-469794                   3      cpu-migrations                   #   23,777 /sec                      
+ Notification Th-469795                   0      cpu-migrations                   #    0,000 /sec                      
+  Common-Cleaner-469796                   0      cpu-migrations                   #    0,000 /sec                      
+            java-469784                   4      page-faults                      #   35,719 K/sec                     
+            java-469785                 356      page-faults                      #   21,101 /sec                      
+ VM Periodic Tas-469786                   1      page-faults                      #    5,877 K/sec                     
+       VM Thread-469787                   1      page-faults                      #    3,231 K/sec                     
+ Reference Handl-469788                   0      page-faults                      #    0,000 /sec                      
+       Finalizer-469789                   0      page-faults                      #    0,000 /sec                      
+ Signal Dispatch-469790                  23      page-faults                      #  192,464 K/sec                     
+  Service Thread-469791                   0      page-faults                      #    0,000 /sec                      
+ Monitor Deflati-469792                   0      page-faults                      #    0,000 /sec                      
+ C2 CompilerThre-469793                 146      page-faults                      #    2,360 K/sec                     
+ C1 CompilerThre-469794                 144      page-faults                      #    1,141 K/sec                     
+ Notification Th-469795                   0      page-faults                      #    0,000 /sec                      
+  Common-Cleaner-469796                   0      page-faults                      #    0,000 /sec                      
+            java-469784             246 701      cycles                           #    2,203 GHz                       
+            java-469785      40 396 133 251      cycles                           #    2,394 GHz                       
+ VM Periodic Tas-469786             343 020      cycles                           #    2,016 GHz                       
+       VM Thread-469787             495 347      cycles                           #    1,600 GHz                       
+ Reference Handl-469788              24 040      cycles                           #    1,457 GHz                       
+       Finalizer-469789              55 849      cycles                           #    1,778 GHz                       
+ Signal Dispatch-469790             252 219      cycles                           #    2,111 GHz                       
+  Service Thread-469791              92 429      cycles                           #    1,372 GHz                       
+ Monitor Deflati-469792             698 315      cycles                           #    1,140 GHz                       
+ C2 CompilerThre-469793         146 133 736      cycles                           #    2,362 GHz                       
+ C1 CompilerThre-469794         300 001 385      cycles                           #    2,378 GHz                       
+ Notification Th-469795               5 656      cycles                           #    0,588 GHz                       
+  Common-Cleaner-469796               7 600      cycles                           #    0,829 GHz                       
+            java-469784              80 180      instructions                     #    0,33  insn per cycle            
+            java-469785      55 425 837 428      instructions                     #    1,37  insn per cycle            
+ VM Periodic Tas-469786             269 362      instructions                     #    0,79  insn per cycle            
+       VM Thread-469787             242 867      instructions                     #    0,49  insn per cycle            
+ Reference Handl-469788               4 143      instructions                     #    0,17  insn per cycle            
+       Finalizer-469789               7 413      instructions                     #    0,13  insn per cycle            
+ Signal Dispatch-469790             179 354      instructions                     #    0,71  insn per cycle            
+  Service Thread-469791              41 603      instructions                     #    0,45  insn per cycle            
+ Monitor Deflati-469792             482 573      instructions                     #    0,69  insn per cycle            
+ C2 CompilerThre-469793         133 422 758      instructions                     #    0,91  insn per cycle            
+ C1 CompilerThre-469794         588 875 433      instructions                     #    1,96  insn per cycle            
+ Notification Th-469795               3 997      instructions                     #    0,71  insn per cycle            
+  Common-Cleaner-469796               4 257      instructions                     #    0,56  insn per cycle            
+            java-469784              15 999      branches                         #  142,867 M/sec                     
+            java-469785       2 578 186 440      branches                         #  152,816 M/sec                     
+ VM Periodic Tas-469786              45 916      branches                         #  269,851 M/sec                     
+       VM Thread-469787              46 716      branches                         #  150,923 M/sec                     
+ Reference Handl-469788                 706      branches                         #   42,790 M/sec                     
+       Finalizer-469789               1 676      branches                         #   53,367 M/sec                     
+ Signal Dispatch-469790              33 719      branches                         #  282,160 M/sec                     
+  Service Thread-469791               7 561      branches                         #  112,271 M/sec                     
+ Monitor Deflati-469792              85 315      branches                         #  139,287 M/sec                     
+ C2 CompilerThre-469793          26 925 016      branches                         #  435,201 M/sec                     
+ C1 CompilerThre-469794          97 653 619      branches                         #  773,968 M/sec                     
+ Notification Th-469795                 638      branches                         #   66,368 M/sec                     
+  Common-Cleaner-469796                 685      branches                         #   74,700 M/sec                     
+            java-469784                 585      branch-misses                    #    3,66% of all branches           
+            java-469785           5 619 980      branch-misses                    #    0,22% of all branches           
+ VM Periodic Tas-469786                 954      branch-misses                    #    2,08% of all branches           
+       VM Thread-469787               1 412      branch-misses                    #    3,02% of all branches           
+ Reference Handl-469788                  47      branch-misses                    #    6,66% of all branches           
+       Finalizer-469789                  37      branch-misses                    #    2,21% of all branches           
+ Signal Dispatch-469790                 821      branch-misses                    #    2,43% of all branches           
+  Service Thread-469791                 413      branch-misses                    #    5,46% of all branches           
+ Monitor Deflati-469792               1 476      branch-misses                    #    1,73% of all branches           
+ C2 CompilerThre-469793           1 471 202      branch-misses                    #    5,46% of all branches           
+ C1 CompilerThre-469794           1 513 243      branch-misses                    #    1,55% of all branches           
+ Notification Th-469795                  12      branch-misses                    #    1,88% of all branches           
+  Common-Cleaner-469796                  12      branch-misses                    #    1,75% of all branches           
+            java-469784             810 800      slots                            #    7,240 G/sec                     
+            java-469785     201 077 614 950      slots                            #   11,918 G/sec                     
+ VM Periodic Tas-469786             918 240      slots                            #    5,397 G/sec                     
+       VM Thread-469787           1 503 400      slots                            #    4,857 G/sec                     
+ Reference Handl-469788              36 315      slots                            #    2,201 G/sec                     
+       Finalizer-469789             128 925      slots                            #    4,105 G/sec                     
+ Signal Dispatch-469790             703 610      slots                            #    5,888 G/sec                     
+  Service Thread-469791             203 585      slots                            #    3,023 G/sec                     
+ Monitor Deflati-469792           1 904 490      slots                            #    3,109 G/sec                     
+ C2 CompilerThre-469793         371 953 660      slots                            #    6,012 G/sec                     
+ C1 CompilerThre-469794         999 861 555      slots                            #    7,925 G/sec                     
+ Notification Th-469795              18 205      slots                            #    1,894 G/sec                     
+  Common-Cleaner-469796              11 660      slots                            #    1,272 G/sec                     
+            java-469784              85 849      topdown-retiring                 #     10,6% Retiring                 
+            java-469785      51 982 303 269      topdown-retiring                 #     24,5% Retiring                 
+ VM Periodic Tas-469786             284 474      topdown-retiring                 #     31,0% Retiring                 
+       VM Thread-469787             224 036      topdown-retiring                 #     14,9% Retiring                 
+ Reference Handl-469788               5 838      topdown-retiring                 #     16,1% Retiring                 
+       Finalizer-469789               7 583      topdown-retiring                 #      5,9% Retiring                 
+ Signal Dispatch-469790             209 703      topdown-retiring                 #     29,8% Retiring                 
+  Service Thread-469791              47 103      topdown-retiring                 #     23,1% Retiring                 
+ Monitor Deflati-469792             433 178      topdown-retiring                 #     22,5% Retiring                 
+ C2 CompilerThre-469793         118 672 672      topdown-retiring                 #     29,1% Retiring                 
+ C1 CompilerThre-469794         556 828 938      topdown-retiring                 #     54,1% Retiring                 
+ Notification Th-469795               5 068      topdown-retiring                 #     27,8% Retiring                 
+  Common-Cleaner-469796               5 349      topdown-retiring                 #     45,9% Retiring                 
+            java-469784              50 873      topdown-bad-spec                 #      6,3% Bad Speculation          
+            java-469785      17 347 872 662      topdown-bad-spec                 #      8,2% Bad Speculation          
+ VM Periodic Tas-469786              64 816      topdown-bad-spec                 #      7,1% Bad Speculation          
+       VM Thread-469787             194 557      topdown-bad-spec                 #     12,9% Bad Speculation          
+ Reference Handl-469788               2 421      topdown-bad-spec                 #      6,7% Bad Speculation          
+       Finalizer-469789               4 550      topdown-bad-spec                 #      3,5% Bad Speculation          
+ Signal Dispatch-469790              71 740      topdown-bad-spec                 #     10,2% Bad Speculation          
+  Service Thread-469791              17 564      topdown-bad-spec                 #      8,6% Bad Speculation          
+ Monitor Deflati-469792             422 201      topdown-bad-spec                 #     22,0% Bad Speculation          
+ C2 CompilerThre-469793         153 157 389      topdown-bad-spec                 #     37,6% Bad Speculation          
+ C1 CompilerThre-469794         192 130 259      topdown-bad-spec                 #     18,7% Bad Speculation          
+ Notification Th-469795                 785      topdown-bad-spec                 #      4,3% Bad Speculation          
+  Common-Cleaner-469796                 457      topdown-bad-spec                 #      3,9% Bad Speculation          
+            java-469784             340 218      topdown-fe-bound                 #     42,0% Frontend Bound           
+            java-469785       3 240 354 383      topdown-fe-bound                 #      1,5% Frontend Bound           
+ VM Periodic Tas-469786             410 507      topdown-fe-bound                 #     44,7% Frontend Bound           
+       VM Thread-469787             707 482      topdown-fe-bound                 #     47,1% Frontend Bound           
+ Reference Handl-469788              13 671      topdown-fe-bound                 #     37,6% Frontend Bound           
+       Finalizer-469789              14 156      topdown-fe-bound                 #     11,0% Frontend Bound           
+ Signal Dispatch-469790             358 703      topdown-fe-bound                 #     51,0% Frontend Bound           
+  Service Thread-469791             123 747      topdown-fe-bound                 #     60,8% Frontend Bound           
+ Monitor Deflati-469792             769 264      topdown-fe-bound                 #     40,0% Frontend Bound           
+ C2 CompilerThre-469793         125 932 523      topdown-fe-bound                 #     30,9% Frontend Bound           
+ C1 CompilerThre-469794         214 911 794      topdown-fe-bound                 #     20,9% Frontend Bound           
+ Notification Th-469795               4 711      topdown-fe-bound                 #     25,9% Frontend Bound           
+  Common-Cleaner-469796               5 304      topdown-fe-bound                 #     45,5% Frontend Bound           
+            java-469784             333 858      topdown-be-bound                 #     41,2% Backend Bound            
+            java-469785     140 024 130 315      topdown-be-bound                 #     65,9% Backend Bound            
+ VM Periodic Tas-469786             158 441      topdown-be-bound                 #     17,3% Backend Bound            
+       VM Thread-469787             377 323      topdown-be-bound                 #     25,1% Backend Bound            
+ Reference Handl-469788              14 383      topdown-be-bound                 #     39,6% Backend Bound            
+       Finalizer-469789             102 634      topdown-be-bound                 #     79,6% Backend Bound            
+ Signal Dispatch-469790              63 462      topdown-be-bound                 #      9,0% Backend Bound            
+  Service Thread-469791              15 169      topdown-be-bound                 #      7,5% Backend Bound            
+ Monitor Deflati-469792             298 632      topdown-be-bound                 #     15,5% Backend Bound            
+ C2 CompilerThre-469793           9 700 856      topdown-be-bound                 #      2,4% Backend Bound            
+ C1 CompilerThre-469794          64 581 313      topdown-be-bound                 #      6,3% Backend Bound            
+ Notification Th-469795               7 638      topdown-be-bound                 #     42,0% Backend Bound            
+  Common-Cleaner-469796                 548      topdown-be-bound                 #      4,7% Backend Bound            
+
+      17,016894570 seconds time elapsed
+

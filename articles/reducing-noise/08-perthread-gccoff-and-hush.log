@@ -1,0 +1,9 @@
+cset: --> last message, executed args into cpuset "/user", new pid is: 469784
+method main() entered at 455 ms
+executions started at 543 ms
+dummy result is 19999980000000000
+40000 executions took 16743.7 ms (0.419 ms per execution)
+mean 0.418 ms, std dev 0.058 ms, histogram-main.log
+min 0.417 ms, med 0.418 ms, max 11.846 ms
+23 samples greater than 0.438 ms (0.055 percentile)
+measurement finished at 17355 ms
